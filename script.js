@@ -11,7 +11,7 @@ var phraseDictionary = {
   'this is a monkey': 'monkey.png',
   'this is an elephant': 'elephant.png',
   'this is an owl': 'owl.png',
-  'this is an ostrich': 'ostritch.png'
+  'this is an ostrich': 'ostrich.png'
   
   
 };
