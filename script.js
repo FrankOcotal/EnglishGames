@@ -8,6 +8,7 @@ var phraseDictionary = {
   'this is a pencil': 'pencil.png',
   'this is a tiger': 'tiger.png',
   'this is a lion': 'lion.png',
+  'this is a monkey': 'monkey.png',
   
   
 };
