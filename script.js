@@ -9,6 +9,9 @@ var phraseDictionary = {
   'this is a tiger': 'tiger.png',
   'this is a lion': 'lion.png',
   'this is a monkey': 'monkey.png',
+  'this is an elephant': 'elephant.png',
+  'this is an owl': 'owl.png',
+  'this is an ostrich': 'ostritch.png'
   
   
 };
