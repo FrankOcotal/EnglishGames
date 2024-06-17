@@ -3,26 +3,30 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var phraseDictionary = {
-  
   'I have a rabbit': 'rabbit.png',
   'this is a pencil': 'pencil.png',
   'this is a tiger': 'tiger.png',
   'this is a lion': 'lion.png',
   'this is a monkey': 'monkey.png',
-  'this is an elephant': 'elephant.png',
+  'this is an ostrich': 'ostrich.png',
   'this is an owl': 'owl.png',
-  'this is an ostrich': 'ostrich.png'
-  
-  
 };
 
 var phrases = Object.keys(phraseDictionary);
 
-var phrasePara = document.querySelector('.phrase');
 var phraseImage = document.getElementById('phraseImage');
-var resultImage = document.getElementById('resultImage');
-
+var logo = document.getElementById('logo');
 var testBtn = document.querySelector('button');
+var correctCountElem = document.getElementById('correctCount');
+var incorrectCountElem = document.getElementById('incorrectCount');
+
+var correctCount = 0;
+var incorrectCount = 0;
+
+function updateScores() {
+  correctCountElem.textContent = 'Correct: ' + correctCount;
+  incorrectCountElem.textContent = 'Incorrect: ' + incorrectCount;
+}
 
 function randomPhrase() {
   var number = Math.floor(Math.random() * phrases.length);
@@ -36,11 +40,9 @@ function testSpeech() {
   var phraseKey = phrases[randomPhrase()];
   var phraseImageUrl = phraseDictionary[phraseKey];
   var phrase = phraseKey.toLowerCase();
-  
+
   phraseImage.src = phraseImageUrl;
   phraseImage.style.display = 'block';
-  
-  resultImage.style.display = 'none';
 
   var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase + ';';
   var recognition = new SpeechRecognition();
@@ -56,13 +58,13 @@ function testSpeech() {
   recognition.onresult = function(event) {
     var speechResult = event.results[0][0].transcript.toLowerCase();
     if (speechResult === phrase) {
-      resultImage.src = 'correct.png';
-      resultImage.style.display = 'block';
+      logo.src = 'happy_mode.png';  // Cambiar a la imagen correcta
+      correctCount++;
     } else {
-      resultImage.src = 'wrong.png';
-      resultImage.style.display = 'block';
+      logo.src = 'sad_mode.png';  // Cambiar a la imagen incorrecta
+      incorrectCount++;
     }
-
+    updateScores();
     console.log('Confidence: ' + event.results[0][0].confidence);
   }
 
