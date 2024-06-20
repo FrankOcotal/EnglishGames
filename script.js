@@ -15,6 +15,15 @@ var levelElem = document.getElementById('level');
 
 // Crear un objeto de audio para los aplausos y precargarlo
 var applauseAudio = new Audio('win.wav');
+applauseAudio.preload = 'auto';  // Asegurar que el audio se precargue
+
+applauseAudio.addEventListener('canplaythrough', function() {
+  console.log('Audio cargado y listo para reproducirse');
+}, false);
+
+applauseAudio.addEventListener('error', function(e) {
+  console.log('Error al cargar el audio', e);
+}, false);
 
 function updateScores() {
   correctCountElem.textContent = 'Correct: ' + correctCount;
@@ -58,7 +67,11 @@ function testSpeech() {
     if (speechResult === phrase) {
       logo.src = 'img/happy_mode.png';  // Cambiar a la imagen correcta
       correctCount++;
-      applauseAudio.play();  // Reproducir el audio de aplausos
+      applauseAudio.play().then(() => {
+        console.log('Aplausos reproducidos');
+      }).catch((error) => {
+        console.log('Error al reproducir aplausos:', error);
+      });
       if (correctCount % 5 === 0) {
         currentLevel++;
         if (currentLevel > Object.keys(levelPhrases).length) {
