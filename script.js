@@ -14,7 +14,7 @@ var incorrectCountElem = document.getElementById('incorrectCount');
 var levelElem = document.getElementById('level');
 
 // Crear un objeto de audio para los aplausos y precargarlo
-var applauseAudio = new Audio('applause.mp3');
+var applauseAudio = new Audio('win.wav');
 
 function updateScores() {
   correctCountElem.textContent = 'Correct: ' + correctCount;
