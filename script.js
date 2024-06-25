@@ -13,6 +13,13 @@ var correctCountElem = document.getElementById('correctCount');
 var incorrectCountElem = document.getElementById('incorrectCount');
 var levelElem = document.getElementById('level');
 
+// Crear objetos de audio y precargarlos
+var applauseAudio = new Audio('win.wav');
+var errorAudio = new Audio('error.wav');
+
+applauseAudio.preload = 'auto';
+errorAudio.preload = 'auto';
+
 function updateScores() {
   correctCountElem.textContent = 'Correct: ' + correctCount;
   incorrectCountElem.textContent = 'Incorrect: ' + incorrectCount;
@@ -28,6 +35,13 @@ function randomPhrase() {
   return phrases[number];
 }
 
+function speak(text) {
+  var synth = window.speechSynthesis;
+  var utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  synth.speak(utterance);
+}
+
 function testSpeech() {
   testBtn.disabled = true;
   testBtn.textContent = 'Test in progress';
@@ -36,10 +50,17 @@ function testSpeech() {
   var phraseImageUrl = levelPhrases[currentLevel][phraseKey];
   var phrase = phraseKey.toLowerCase();
 
-  phraseImage.src = "img/" + phraseImageUrl;
-  phraseImage.style.display = 'block';
+  if (currentLevel < 5) {
+    phraseImage.src = "img/" + phraseImageUrl;
+    phraseImage.style.display = 'block';
+  } else {
+    speak(phraseKey);
+  }
 
-  var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase + ';';
+  var expectedResponse = (currentLevel < 5) ? phrase : levelResponses[phraseKey].toLowerCase();
+
+  // Añadir variantes de la respuesta esperada para mayor precisión en la pronunciación
+  var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + expectedResponse + ' | ' + expectedResponse.replace(/[^a-zA-Z ]/g, '') + ';';
   var recognition = new SpeechRecognition();
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
@@ -52,10 +73,19 @@ function testSpeech() {
 
   recognition.onresult = function(event) {
     var speechResult = event.results[0][0].transcript.toLowerCase();
-    if (speechResult === phrase) {
-      logo.src = 'img/happy_mode.png';  // Cambiar a la imagen correcta
+    var isCorrect = false;
+
+    if (currentLevel < 5) {
+      isCorrect = (speechResult === expectedResponse);
+    } else {
+      var expectedPrefix = levelResponses[phraseKey].toLowerCase();
+      isCorrect = speechResult.startsWith(expectedPrefix);
+    }
+
+    if (isCorrect) {
+      logo.src = 'img/happy_mode.png';
       correctCount++;
-      playApplause();  // Reproducir el audio de aplausos
+      applauseAudio.play(); // Reproducir el audio de aplausos
       if (correctCount % 5 === 0) {
         currentLevel++;
         if (currentLevel > Object.keys(levelPhrases).length) {
@@ -64,18 +94,21 @@ function testSpeech() {
         updateLevel();
       }
     } else {
-      logo.src = 'img/sad_mode.png';  // Cambiar a la imagen incorrecta
+      logo.src = 'img/sad_mode.png';
       incorrectCount++;
-      playError();  // Reproducir el audio de error
+      errorAudio.play(); // Reproducir el audio de error
     }
     updateScores();
     console.log('Confidence: ' + event.results[0][0].confidence);
+
+    setTimeout(function() {
+      testBtn.disabled = false;
+      testBtn.textContent = 'Start new test';
+    }, 2000); // Habilitar el botón después de 3 segundos
   }
 
   recognition.onspeechend = function() {
     recognition.stop();
-    testBtn.disabled = false;
-    testBtn.textContent = 'Start new test';
   }
 
   recognition.onerror = function(event) {
