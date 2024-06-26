@@ -1,14 +1,14 @@
+import { levelPhrases } from './phrases.js';
+import { updateScores, updateLevel, speak } from './utils.js';
 
-  import { playApplause, playError } from './audio.js';
-import { updateScores, updateLevel, resetButton, speak } from './utils.js';
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 
-const recognitionTimeout = 5000; // 5 segundos
-
-export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCount, logo, phraseImage, testBtn) {
+export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phraseImage, testBtn) {
   testBtn.disabled = true;
   testBtn.textContent = 'Test in progress';
 
-  var phraseKey = randomPhrase(levelPhrases, currentLevel);
+  var phraseKey = randomPhrase(currentLevel);
   var phraseImageUrl = levelPhrases[currentLevel][phraseKey];
   var phrase = phraseKey.toLowerCase();
 
@@ -19,9 +19,9 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
     speak(phraseKey);
   }
 
-  var expectedResponse = (currentLevel < 5) ? phrase : levelResponses[phraseKey].toLowerCase();
+  var expectedResponse = (currentLevel < 5) ? phrase : levelPhrases[phraseKey].toLowerCase();
 
-  var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + expectedResponse + ' | ' + expectedResponse.replace(/[^a-zA-Z ]/g, '') + ';';
+  var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + expectedResponse + ';';
   var recognition = new SpeechRecognition();
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
@@ -30,21 +30,14 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  var timeoutHandler = setTimeout(function() {
-    console.log('No speech detected, timing out.');
-    handleNoSpeech();
-  }, recognitionTimeout);
-
   recognition.start();
 
   recognition.onresult = function(event) {
-    clearTimeout(timeoutHandler); // Clear the timeout since we got a result
-
     var speechResult = event.results[0][0].transcript.toLowerCase();
     if (speechResult === expectedResponse) {
       logo.src = 'img/happy_mode.png';
       correctCount++;
-      playApplause();
+      applauseAudio.play(); // Reproducir el audio de aplausos
       if (correctCount % 5 === 0) {
         currentLevel++;
         if (currentLevel > Object.keys(levelPhrases).length) {
@@ -55,12 +48,14 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
     } else {
       logo.src = 'img/sad_mode.png';
       incorrectCount++;
-      playError();
+      errorAudio.play(); // Reproducir el audio de error
     }
     updateScores(correctCount, incorrectCount);
-    console.log('Confidence: ' + event.results[0][0].confidence);
 
-    setTimeout(resetButton, 3000, testBtn);
+    setTimeout(function() {
+      testBtn.disabled = false;
+      testBtn.textContent = 'Start new test';
+    }, 2000);
   };
 
   recognition.onspeechend = function() {
@@ -68,13 +63,20 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
   };
 
   recognition.onerror = function(event) {
-    clearTimeout(timeoutHandler); // Clear the timeout since an error occurred
-    handleRecognitionError(event, testBtn, logo, incorrectCount);
+    testBtn.disabled = false;
+    testBtn.textContent = 'Start new test';
+    console.log('Error occurred in recognition: ' + event.error);
   };
 
-  recognition.onnomatch = function(event) {
-    clearTimeout(timeoutHandler); // Clear the timeout since no match was found
-    handleNoMatch(testBtn, logo, incorrectCount);
+  recognition.onsoundend = function() {
+    setTimeout(function() {
+      testBtn.disabled = false;
+      testBtn.textContent = 'Start new test';
+    }, 2000);
+  };
+
+  recognition.onspeechend = function() {
+    recognition.stop();
   };
 
   recognition.onaudiostart = function(event) {
@@ -86,8 +88,15 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
   };
 
   recognition.onend = function(event) {
-    clearTimeout(timeoutHandler); // Clear the timeout since recognition ended
     console.log('SpeechRecognition.onend');
+    if (!recognition.finalResult) {
+      testBtn.disabled = false;
+      testBtn.textContent = 'Start new test';
+    }
+  };
+
+  recognition.onnomatch = function(event) {
+    console.log('SpeechRecognition.onnomatch');
   };
 
   recognition.onsoundstart = function(event) {
@@ -105,36 +114,9 @@ export function testSpeech(levelPhrases, currentLevel, correctCount, incorrectCo
   recognition.onstart = function(event) {
     console.log('SpeechRecognition.onstart');
   };
-
-  function handleNoSpeech() {
-    recognition.stop();
-    logo.src = 'img/sad_mode.png';
-    incorrectCount++;
-    playError();
-    updateScores(correctCount, incorrectCount);
-    resetButton(testBtn);
-  }
-
-  function handleRecognitionError(event, testBtn, logo, incorrectCount) {
-    console.log('Error occurred in recognition: ' + event.error);
-    logo.src = 'img/sad_mode.png';
-    incorrectCount++;
-    playError();
-    updateScores(correctCount, incorrectCount);
-    resetButton(testBtn);
-  }
-
-  function handleNoMatch(testBtn, logo, incorrectCount) {
-    console.log('SpeechRecognition.onnomatch');
-    logo.src = 'img/sad_mode.png';
-    incorrectCount++;
-    playError();
-    updateScores(correctCount, incorrectCount);
-    resetButton(testBtn);
-  }
 }
 
-function randomPhrase(levelPhrases, currentLevel) {
+function randomPhrase(currentLevel) {
   var phrases = Object.keys(levelPhrases[currentLevel]);
   var number = Math.floor(Math.random() * phrases.length);
   return phrases[number];
