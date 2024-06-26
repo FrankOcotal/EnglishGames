@@ -26,7 +26,7 @@
 </head>
 <body>
 
-   <div class="w3-top w3-center"> <p  class="w3-xlarge w3-blue" id="level">Level: 1</p></div>
+   <div class="w3-top w3-center"> <p  class="w3-xlarge w3-text-blue" id="level">Level: 1</p></div>
    
    <br><br><br>
 <div class="w3-container w3-center">
@@ -34,23 +34,37 @@
        
      <div class="w3-right">
      <img id="phraseImage" src="" alt="Phrase Image" />
-     </div>
-	
+	 </div>
     <img id="logo" class="w3-image w3-centered" src="logo.png" />
    <p></p>
-	
-    <button class="w3-btn w3-border">Start new test</button>
+    <button class="w3-btn w3-border w3-grey">Start new test</button>
     <div>
-	<br>
-	    
-	<p  class="w3-xlarge"id="correctCount">Correct: 0</p>
-    <p class="w3-xlarge" id="incorrectCount">Incorrect: 0</p>
+	
+	<p  class="w3-large"id="correctCount">Correct: 0</p>
+    <p class="w3-large" id="incorrectCount">Incorrect: 0</p>
         
         <img id="resultImage" src="" alt="Result Image" />
     </div>
-    <script src="script.js"></script>
-	 <script src="phrases.js"></script>
-	 <script src="audio.js"></script>
+    <script type="module" src="js/main.js"></script>
+	
+	<script>
+        // Script para desactivar clic derecho
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        // Opcional: Script para desactivar ciertas combinaciones de teclas (como F12)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I') || (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+	
+	
+	
+	
+	
 </div>
 </body>
 </html>
