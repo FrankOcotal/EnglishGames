@@ -1,6 +1,6 @@
 import { testSpeech } from './recognition.js';
 import { updateLevel } from './utils.js';
-import { levelPhrases } from './levelPhrases.js';
+import { levelPhrases } from './phrases.js';
 
 var currentLevel = 1;
 var correctCount = 0;
