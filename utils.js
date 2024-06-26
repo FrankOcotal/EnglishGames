@@ -1,15 +1,14 @@
 export function updateScores(correctCount, incorrectCount) {
-  document.getElementById('correctCount').textContent = 'Correct: ' + correctCount;
-  document.getElementById('incorrectCount').textContent = 'Incorrect: ' + incorrectCount;
+  var correctCountElem = document.getElementById('correctCount');
+  var incorrectCountElem = document.getElementById('incorrectCount');
+
+  correctCountElem.textContent = 'Correct: ' + correctCount;
+  incorrectCountElem.textContent = 'Incorrect: ' + incorrectCount;
 }
 
 export function updateLevel(currentLevel) {
-  document.getElementById('level').textContent = 'Level: ' + currentLevel;
-}
-
-export function resetButton(testBtn) {
-  testBtn.disabled = false;
-  testBtn.textContent = 'Start new test';
+  var levelElem = document.getElementById('level');
+  levelElem.textContent = 'Level: ' + currentLevel;
 }
 
 export function speak(text) {
