@@ -42,6 +42,44 @@ function speak(text) {
   synth.speak(utterance);
 }
 
+function resetButton() {
+  testBtn.disabled = false;
+  testBtn.textContent = 'Start new test';
+}
+
+function handleSpeechRecognitionResult(event, expectedResponse) {
+  var speechResult = event.results[0][0].transcript.toLowerCase();
+  var isCorrect = false;
+
+  if (currentLevel < 5) {
+    isCorrect = (speechResult === expectedResponse);
+  } else {
+    var expectedPrefix = levelResponses[phraseKey].toLowerCase();
+    isCorrect = speechResult.startsWith(expectedPrefix);
+  }
+
+  if (isCorrect) {
+    logo.src = 'img/happy_mode.png';
+    correctCount++;
+    applauseAudio.play();
+    if (correctCount % 5 === 0) {
+      currentLevel++;
+      if (currentLevel > Object.keys(levelPhrases).length) {
+        currentLevel = 1; // Reiniciar al primer nivel si excede el número de niveles
+      }
+      updateLevel();
+    }
+  } else {
+    logo.src = 'img/sad_mode.png';
+    incorrectCount++;
+    errorAudio.play();
+  }
+  updateScores();
+  console.log('Confidence: ' + event.results[0][0].confidence);
+
+  setTimeout(resetButton, 3000);
+}
+
 function testSpeech() {
   testBtn.disabled = true;
   testBtn.textContent = 'Test in progress';
@@ -59,7 +97,6 @@ function testSpeech() {
 
   var expectedResponse = (currentLevel < 5) ? phrase : levelResponses[phraseKey].toLowerCase();
 
-  // Añadir variantes de la respuesta esperada para mayor precisión en la pronunciación
   var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + expectedResponse + ' | ' + expectedResponse.replace(/[^a-zA-Z ]/g, '') + ';';
   var recognition = new SpeechRecognition();
   var speechRecognitionList = new SpeechGrammarList();
@@ -72,82 +109,58 @@ function testSpeech() {
   recognition.start();
 
   recognition.onresult = function(event) {
-    var speechResult = event.results[0][0].transcript.toLowerCase();
-    var isCorrect = false;
-
-    if (currentLevel < 5) {
-      isCorrect = (speechResult === expectedResponse);
-    } else {
-      var expectedPrefix = levelResponses[phraseKey].toLowerCase();
-      isCorrect = speechResult.startsWith(expectedPrefix);
-    }
-
-    if (isCorrect) {
-      logo.src = 'img/happy_mode.png';
-      correctCount++;
-      applauseAudio.play(); // Reproducir el audio de aplausos
-      if (correctCount % 5 === 0) {
-        currentLevel++;
-        if (currentLevel > Object.keys(levelPhrases).length) {
-          currentLevel = 1; // Reiniciar al primer nivel si excede el número de niveles
-        }
-        updateLevel();
-      }
-    } else {
-      logo.src = 'img/sad_mode.png';
-      incorrectCount++;
-      errorAudio.play(); // Reproducir el audio de error
-    }
-    updateScores();
-    console.log('Confidence: ' + event.results[0][0].confidence);
-
-    setTimeout(function() {
-      testBtn.disabled = false;
-      testBtn.textContent = 'Start new test';
-    }, 2000); // Habilitar el botón después de 3 segundos
-  }
+    handleSpeechRecognitionResult(event, expectedResponse);
+  };
 
   recognition.onspeechend = function() {
     recognition.stop();
-  }
+  };
 
   recognition.onerror = function(event) {
-    testBtn.disabled = false;
-    testBtn.textContent = 'Start new test';
     console.log('Error occurred in recognition: ' + event.error);
-  }
-
-  recognition.onaudiostart = function(event) {
-    console.log('SpeechRecognition.onaudiostart');
-  }
-
-  recognition.onaudioend = function(event) {
-    console.log('SpeechRecognition.onaudioend');
-  }
-
-  recognition.onend = function(event) {
-    console.log('SpeechRecognition.onend');
-  }
+    logo.src = 'img/sad_mode.png';
+    incorrectCount++;
+    errorAudio.play();
+    updateScores();
+    setTimeout(resetButton, 3000);
+  };
 
   recognition.onnomatch = function(event) {
     console.log('SpeechRecognition.onnomatch');
-  }
+    logo.src = 'img/sad_mode.png';
+    incorrectCount++;
+    errorAudio.play();
+    updateScores();
+    setTimeout(resetButton, 3000);
+  };
+
+  recognition.onaudiostart = function(event) {
+    console.log('SpeechRecognition.onaudiostart');
+  };
+
+  recognition.onaudioend = function(event) {
+    console.log('SpeechRecognition.onaudioend');
+  };
+
+  recognition.onend = function(event) {
+    console.log('SpeechRecognition.onend');
+  };
 
   recognition.onsoundstart = function(event) {
     console.log('SpeechRecognition.onsoundstart');
-  }
+  };
 
   recognition.onsoundend = function(event) {
     console.log('SpeechRecognition.onsoundend');
-  }
+  };
 
   recognition.onspeechstart = function(event) {
     console.log('SpeechRecognition.onspeechstart');
-  }
+  };
 
   recognition.onstart = function(event) {
     console.log('SpeechRecognition.onstart');
-  }
+  };
 }
 
 testBtn.addEventListener('click', testSpeech);
