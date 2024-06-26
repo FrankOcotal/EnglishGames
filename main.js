@@ -1,4 +1,4 @@
-iimport { testSpeech } from './recognition.js';
+import { testSpeech } from './recognition.js';
 import { updateLevel } from './utils.js';
 import { levelPhrases } from './levelPhrases.js';
 
