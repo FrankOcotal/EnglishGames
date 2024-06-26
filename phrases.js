@@ -1,4 +1,4 @@
-var levelPhrases = {
+export const levelPhrases = {
   1: {
     'yellow': 'yellow.png',
     'purple': 'purple.png',
@@ -34,10 +34,4 @@ var levelPhrases = {
     'how are you?': '',
     'where do you live?': '',
   }
-};
-
-var levelResponses = {
-  'what is your name?': 'my name is ',
-  'how are you?': 'i am fine',
-  'where do you live?': 'i live in '
 };
