@@ -14,4 +14,4 @@ testBtn.addEventListener('click', function() {
   testSpeech(levelPhrases, currentLevel, correctCount, incorrectCount, logo, phraseImage, testBtn);
 });
 
-updateLevel(currentLevel); // Inicializa el nivel mostrado
+updateLevel(currentLevel); 
