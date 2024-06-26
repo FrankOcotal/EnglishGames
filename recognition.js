@@ -1,5 +1,6 @@
 import { levelPhrases } from './phrases.js';
 import { updateScores, updateLevel, speak } from './utils.js';
+import { playApplause, playError } from './audio.js'
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
