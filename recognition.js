@@ -38,7 +38,7 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
     if (speechResult === expectedResponse) {
       logo.src = 'img/happy_mode.png';
       correctCount++;
-      applauseAudio.play(); // Reproducir el audio de aplausos
+      playApplause(); // Reproducir el audio de aplausos
       if (correctCount % 5 === 0) {
         currentLevel++;
         if (currentLevel > Object.keys(levelPhrases).length) {
@@ -49,7 +49,7 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
     } else {
       logo.src = 'img/sad_mode.png';
       incorrectCount++;
-      errorAudio.play(); // Reproducir el audio de error
+      playError(); // Reproducir el audio de error
     }
     updateScores(correctCount, incorrectCount);
 
