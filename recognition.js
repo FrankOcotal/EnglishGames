@@ -1,6 +1,6 @@
-import { levelPhrases } from './phrases.js';
+ import { levelPhrases, levelResponses } from './phrases.js';
 import { updateScores, updateLevel, speak } from './utils.js';
-import { playApplause, playError } from './audio.js'
+import { playApplause, playError } from './audio.js';
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
@@ -20,7 +20,7 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
     speak(phraseKey);
   }
 
-  var expectedResponse = (currentLevel < 5) ? phrase : levelPhrases[phraseKey].toLowerCase();
+  var expectedResponse = (currentLevel < 5) ? phrase : levelResponses[phraseKey].toLowerCase();
 
   var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + expectedResponse + ';';
   var recognition = new SpeechRecognition();
@@ -38,7 +38,7 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
     if (speechResult === expectedResponse) {
       logo.src = 'img/happy_mode.png';
       correctCount++;
-      playApplause(); // Reproducir el audio de aplausos
+      playApplause();
       if (correctCount % 5 === 0) {
         currentLevel++;
         if (currentLevel > Object.keys(levelPhrases).length) {
@@ -49,7 +49,7 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
     } else {
       logo.src = 'img/sad_mode.png';
       incorrectCount++;
-      playError(); // Reproducir el audio de error
+      playError();
     }
     updateScores(correctCount, incorrectCount);
 
