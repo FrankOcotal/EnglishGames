@@ -1,5 +1,5 @@
 import { levelPhrases, levelResponses } from './phrases.js';
-import { updateScores, updateLevel, speak } from './utils.js';
+import { updateScores, updateLevel } from './utils.js';
 import { playApplause, playError } from './audio.js';
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
@@ -50,8 +50,8 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
       logo.src = 'img/sad_mode.png';
       incorrectCount++;
       playError();
+      updateScores(correctCount, incorrectCount);
     }
-    updateScores(correctCount, incorrectCount);
 
     setTimeout(function() {
       testBtn.disabled = false;
