@@ -1,7 +1,6 @@
 export function updateScores(correctCount, incorrectCount) {
   var correctCountElem = document.getElementById('correctCount');
   var incorrectCountElem = document.getElementById('incorrectCount');
-
   correctCountElem.textContent = 'Correct: ' + correctCount;
   incorrectCountElem.textContent = 'Incorrect: ' + incorrectCount;
 }
