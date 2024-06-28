@@ -14,4 +14,3 @@ testBtn.addEventListener('click', function() {
 });
 
 updateLevel(currentLevel); // Inicializa el nivel mostrado
-
