@@ -1,4 +1,4 @@
- import { levelPhrases, levelResponses } from './phrases.js';
+import { levelPhrases, levelResponses } from './phrases.js';
 import { updateScores, updateLevel, speak } from './utils.js';
 import { playApplause, playError } from './audio.js';
 
@@ -74,10 +74,6 @@ export function testSpeech(currentLevel, correctCount, incorrectCount, logo, phr
       testBtn.disabled = false;
       testBtn.textContent = 'Start new test';
     }, 2000);
-  };
-
-  recognition.onspeechend = function() {
-    recognition.stop();
   };
 
   recognition.onaudiostart = function(event) {
