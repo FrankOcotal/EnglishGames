@@ -35,3 +35,9 @@ export const levelPhrases = {
     'where do you live?': '',
   }
 };
+
+export const levelResponses = {
+  'what is your name?': 'my name is (name)',
+  'how are you?': 'I am fine, thank you',
+  'where do you live?': 'I live in (place)'
+};
