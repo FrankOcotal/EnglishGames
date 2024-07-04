@@ -24,9 +24,24 @@
       padding: 10px;
       border: 1px solid #aaaaaa;
       text-align: center;
-      line-height: 100px;
       background-color: #f1f1f1;
       display: inline-block;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .words-container {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .images-container {
+      margin-top: 70px; /* Adjust as needed */
+      text-align: center;
     }
   </style>
 </head>
@@ -35,37 +50,38 @@
 <div class="w3-container">
   <h2 class="w3-center">Matching Game</h2>
 
-  <!-- Dropzones with images inside w3-cards -->
-  <div class="w3-center">
-    <div class="w3-card dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="apple.png" style="width:100px;height:100px;">
+  <div class="container">
+    <!-- Draggable words -->
+    <div class="words-container">
+      <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
+      <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
+      <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
+      <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
+      <div class="draggable" id="word5" draggable="true" ondragstart="drag(event)">Orange</div>
+      <div class="draggable" id="word6" draggable="true" ondragstart="drag(event)">Pear</div>
     </div>
-    <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="banana.png" style="width:100px;height:100px;">
-    </div>
-    <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="cherry.png" style="width:100px;height:100px;">
-    </div>
-    
-    <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="grape.png" style="width:100px;height:100px;">
-    </div>
-    <div class="w3-card dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="orange.png" style="width:100px;height:100px;">
-    </div>
-    <div class="w3-card dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="pear.png" style="width:100px;height:100px;">
-    </div>
-  </div>
 
-  <!-- Draggable words -->
-  <div class="w3-center">
-    <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
-    <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
-    <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
-    <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
-    <div class="draggable" id="word5" draggable="true" ondragstart="drag(event)">Orange</div>
-    <div class="draggable" id="word6" draggable="true" ondragstart="drag(event)">Pear</div>
+    <!-- Dropzones with images inside w3-cards -->
+    <div class="images-container">
+      <div class="w3-card dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="apple.png" style="width:100px;height:100px;">
+      </div>
+      <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="banana.png" style="width:100px;height:100px;">
+      </div>
+      <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="cherry.png" style="width:100px;height:100px;">
+      </div>
+      <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="grape.png" style="width:100px;height:100px;">
+      </div>
+      <div class="w3-card dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="orange.png" style="width:100px;height:100px;">
+      </div>
+      <div class="w3-card dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="pear.png" style="width:100px;height:100px;">
+      </div>
+    </div>
   </div>
 </div>
 
@@ -91,7 +107,7 @@
         (data === "word5" && dropzone.id === "img5") ||
         (data === "word6" && dropzone.id === "img6")) {
       dropzone.appendChild(document.getElementById(data));
-      dropzone.style.backgroundColor = "#d4edda"; // Green background to indicate correct match
+      dropzone.classList.add("w3-opacity"); // Add opacity to indicate correct match
     } else {
       alert("Incorrect match!");
     }
