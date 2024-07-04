@@ -8,7 +8,6 @@ function updateScore() {
 function updateAttempts() {
   document.getElementById('attempts').textContent = attempts;
   if (attempts <= 0) {
-    alert("No more attempts left! Restarting the game.");
     resetGame();
   }
 }
@@ -52,10 +51,11 @@ function drop(ev) {
     dropzone.firstElementChild.classList.add('w3-opacity');
     score++;
     updateScore();
+    playWinSound(); // Play win sound
   } else {
     attempts--;
     updateAttempts();
-    
+    playErrorSound(); // Play error sound
   }
 }
 
