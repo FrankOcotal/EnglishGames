@@ -1,3 +1,42 @@
+let score = 0;
+let timer = 5;
+let timerInterval;
+
+function updateScore() {
+  document.getElementById('score').textContent = score;
+}
+
+function updateTimer() {
+  document.getElementById('timer').textContent = timer;
+  if (timer <= 0) {
+    clearInterval(timerInterval);
+    alert("Time's up! Restarting the game.");
+    resetGame();
+  }
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timer--;
+    updateTimer();
+  }, 1000);
+}
+
+function resetGame() {
+  score = 0;
+  timer = 5;
+  updateScore();
+  updateTimer();
+  document.querySelectorAll('.draggable').forEach(elem => {
+    elem.classList.remove('matched');
+    document.querySelector('.w3-center:last-child').appendChild(elem);
+  });
+  document.querySelectorAll('.dropzone img').forEach(img => {
+    img.classList.remove('w3-opacity');
+  });
+  startTimer();
+}
+
 function allowDrop(ev) {
   ev.preventDefault();
 }
@@ -21,7 +60,13 @@ function drop(ev) {
     draggableElem.classList.add('matched');
     dropzone.appendChild(draggableElem);
     dropzone.firstElementChild.classList.add('w3-opacity');
+    score++;
+    updateScore();
   } else {
     alert("Incorrect match!");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  resetGame();
+});
