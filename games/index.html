@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Match the Word with the Picture</title>
+  <title>Matching Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
@@ -15,6 +15,8 @@
       background-color: #4CAF50;
       color: white;
       display: inline-block;
+      position: relative; /* Añadido para z-index */
+      z-index: 1; /* Añadido para z-index */
     }
 
     .dropzone {
@@ -27,10 +29,19 @@
       line-height: 100px;
       background-color: #f1f1f1;
       display: inline-block;
+      position: relative; /* Añadido para z-index */
     }
 
-    .hidden {
-      display: none;
+    .dropzone img {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      z-index: 0; /* Añadido para z-index */
+      transition: opacity 0.5s ease; /* Transición de opacidad */
+    }
+
+    .matched {
+      opacity: 0.5; /* Opacidad para imágenes que han hecho match */
     }
   </style>
 </head>
@@ -39,50 +50,41 @@
 <div class="w3-container">
   <h2 class="w3-center">Matching Game</h2>
 
-  <div id="game-board">
-    <!-- Dropzones with images inside w3-cards -->
-    <div class="w3-center">
-      <div class="w3-card dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="apple.png" style="width:100px;height:100px;">
-      </div>
-      <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="banana.png" style="width:100px;height:100px;">
-      </div>
-      <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="cherry.png" style="width:100px;height:100px;">
-      </div>
-      <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="grape.png" style="width:100px;height:100px;">
-      </div>
-      <div class="w3-card dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="orange.png" style="width:100px;height:100px;">
-      </div>
-      <div class="w3-card dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="pear.png" style="width:100px;height:100px;">
-      </div>
+  <!-- Dropzones with images inside w3-cards -->
+  <div class="w3-center">
+    <div class="w3-card dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="apple.png" style="width:100px;height:100px;">
     </div>
-
-    <!-- Draggable words -->
-    <div class="w3-center">
-      <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
-      <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
-      <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
-      <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
-      <div class="draggable" id="word5" draggable="true" ondragstart="drag(event)">Orange</div>
-      <div class="draggable" id="word6" draggable="true" ondragstart="drag(event)">Pear</div>
+    <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="banana.png" style="width:100px;height:100px;">
+    </div>
+    <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="cherry.png" style="width:100px;height:100px;">
+    </div>
+    
+    <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="grape.png" style="width:100px;height:100px;">
+    </div>
+    <div class="w3-card dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="orange.png" style="width:100px;height:100px;">
+    </div>
+    <div class="w3-card dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pear.png" style="width:100px;height:100px;">
     </div>
   </div>
 
-  <div class="w3-center hidden" id="congrats-message">
-    <h2>Congratulations! You've matched all the words correctly!</h2>
-    <button onclick="restartGame()">Play Again</button>
+  <!-- Draggable words -->
+  <div class="w3-center">
+    <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
+    <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
+    <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
+    <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
+    <div class="draggable" id="word5" draggable="true" ondragstart="drag(event)">Orange</div>
+    <div class="draggable" id="word6" draggable="true" ondragstart="drag(event)">Pear</div>
   </div>
 </div>
 
 <script>
-  let matches = 0;
-  let totalMatches = 6;
-
   function allowDrop(ev) {
     ev.preventDefault();
   }
@@ -96,6 +98,7 @@
     var data = ev.dataTransfer.getData("text");
     var dropzone = ev.target.closest('.dropzone');
     
+    // Matching logic based on ID
     if ((data === "word1" && dropzone.id === "img1") ||
         (data === "word2" && dropzone.id === "img2") ||
         (data === "word3" && dropzone.id === "img3") ||
@@ -103,28 +106,9 @@
         (data === "word5" && dropzone.id === "img5") ||
         (data === "word6" && dropzone.id === "img6")) {
       dropzone.appendChild(document.getElementById(data));
-      dropzone.style.backgroundColor = "#d4edda"; // Green background to indicate correct match
-      matches++;
-      if (matches === totalMatches) {
-        document.getElementById("game-board").classList.add("hidden");
-        document.getElementById("congrats-message").classList.remove("hidden");
-      }
+      dropzone.querySelector('img').classList.add('matched'); // Añadir clase de opacidad a la imagen
     } else {
       alert("Incorrect match!");
-    }
-  }
-
-  function restartGame() {
-    matches = 0;
-    document.getElementById("game-board").classList.remove("hidden");
-    document.getElementById("congrats-message").classList.add("hidden");
-    
-    let dropzones = document.getElementsByClassName("dropzone");
-    for (let dropzone of dropzones) {
-      dropzone.style.backgroundColor = "#f1f1f1";
-      if (dropzone.firstChild.tagName === "DIV") {
-        document.body.appendChild(dropzone.firstChild);
-      }
     }
   }
 </script>
