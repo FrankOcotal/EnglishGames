@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drag and Drop with W3.CSS</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    #drag1 {
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      line-height: 100px;
+      margin-bottom: 10px;
+    }
+
+    #div1 {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+
+<h2 class="w3-text-teal">Drag and Drop Example with W3.CSS</h2>
+<p class="w3-text-grey">Drag the green square into the gray box:</p>
+
+<div id="drag1" class="w3-green w3-center" draggable="true" ondragstart="drag(event)">Drag me</div>
+
+<div id="div1" class="w3-border w3-padding" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<script>
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
+</script>
+
+</body>
+</html>
 
