@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Match the Word with the Picture</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     .draggable {
@@ -14,23 +13,19 @@
       line-height: 50px;
       background-color: #4CAF50;
       color: white;
+      display: inline-block;
     }
-    
+
     .dropzone {
-      width: 100px;
-      height: 100px;
-      margin: 10px auto; /* Center the dropzones */
+      width: 120px;
+      height: 120px;
+      margin: 10px;
       padding: 10px;
       border: 1px solid #aaaaaa;
       text-align: center;
       line-height: 100px;
       background-color: #f1f1f1;
-    }
-    
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: inline-block;
     }
   </style>
 </head>
@@ -39,28 +34,30 @@
 <div class="w3-container">
   <h2 class="w3-center">Match the Word with the Picture</h2>
 
-  <div class="container">
-    <!-- Dropzones with images -->
-    <div class="dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <!-- Dropzones with images inside w3-cards -->
+  <div class="w3-center">
+    <div class="w3-card dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="apple.png" style="width:100px;height:100px;">
     </div>
-    <div class="dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="banana.png" style="width:100px;height:100px;">
     </div>
-    <div class="dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="cherry.png" style="width:100px;height:100px;">
     </div>
-    <div class="dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="grape.png" style="width:100px;height:100px;">
     </div>
-    <div class="dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="w3-card dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="orange.png" style="width:100px;height:100px;">
     </div>
-    <div class="dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="w3-card dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="pear.png" style="width:100px;height:100px;">
     </div>
+  </div>
 
-    <!-- Draggable words -->
+  <!-- Draggable words -->
+  <div class="w3-center">
     <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
     <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
     <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
