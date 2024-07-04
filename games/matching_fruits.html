@@ -18,8 +18,8 @@
       background-color: #4CAF50;
       color: white;
       display: inline-block;
-      position: relative; /* Añadido para z-index */
-      z-index: 1; /* Añadido para z-index */
+      position: relative;
+      z-index: 1;
     }
 
     .dropzone {
@@ -32,14 +32,14 @@
       line-height: 100px;
       background-color: #f1f1f1;
       display: inline-block;
-      position: relative; /* Añadido para z-index */
+      position: relative;
     }
 
     .matched {
-      position: absolute; /* Añadido para posicionamiento absoluto */
-      top: 0; /* Añadido para posicionamiento absoluto */
-      left: 0; /* Añadido para posicionamiento absoluto */
-      z-index: 2; /* Añadido para z-index superior */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
     }
   </style>
 </head>
@@ -59,7 +59,6 @@
     <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="fruits/cherry.png" style="width:100px;height:100px;">
     </div>
-    
     <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
       <img src="fruits/grape.png" style="width:100px;height:100px;">
     </div>
@@ -79,13 +78,10 @@
     <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
     <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
     <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
-    
-    
   </div>
 </div>
 
-<script src="matching_fruits_level_1.js">
-</script>
+<script src="matching_fruits_level_1.js"></script>
 
 </body>
 </html>
