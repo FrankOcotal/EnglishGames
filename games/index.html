@@ -32,16 +32,11 @@
       position: relative; /* Añadido para z-index */
     }
 
-    .dropzone img {
-      width: 100px;
-      height: 100px;
-      position: relative;
-      z-index: 0; /* Añadido para z-index */
-      transition: opacity 0.5s ease; /* Transición de opacidad */
-    }
-
     .matched {
-      opacity: 0.5; /* Opacidad para imágenes que han hecho match */
+      position: absolute; /* Añadido para posicionamiento absoluto */
+      top: 0; /* Añadido para posicionamiento absoluto */
+      left: 0; /* Añadido para posicionamiento absoluto */
+      z-index: 2; /* Añadido para z-index superior */
     }
   </style>
 </head>
@@ -105,8 +100,9 @@
         (data === "word4" && dropzone.id === "img4") ||
         (data === "word5" && dropzone.id === "img5") ||
         (data === "word6" && dropzone.id === "img6")) {
-      dropzone.appendChild(document.getElementById(data));
-      dropzone.querySelector('img').classList.add('matched'); // Añadir clase de opacidad a la imagen
+      var draggableElem = document.getElementById(data);
+      draggableElem.classList.add('matched'); // Añadir clase para posicionamiento absoluto
+      dropzone.appendChild(draggableElem); // Colocar el div de palabra encima del div de imagen
     } else {
       alert("Incorrect match!");
     }
