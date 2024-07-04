@@ -1,6 +1,5 @@
 let score = 0;
 let attempts = 5;
-let timerInterval;
 
 function updateScore() {
   document.getElementById('score').textContent = score;
