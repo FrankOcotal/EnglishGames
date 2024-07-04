@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Drag and Drop with W3.CSS</title>
+  <title>Match the Word with the Picture</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
-    #drag1 {
+    .draggable {
       width: 100px;
       height: 100px;
-      background-color: #4CAF50;
-      color: white;
-      text-align: center;
-      line-height: 100px;
-      margin-bottom: 10px;
+      margin: 10px;
+      cursor: pointer;
     }
-
-    #div1 {
-      width: 200px;
-      height: 200px;
+    
+    .dropzone {
+      width: 100%;
+      height: 100px;
+      margin: 10px;
       padding: 10px;
       border: 1px solid #aaaaaa;
+      text-align: center;
+      line-height: 100px;
+      background-color: #f1f1f1;
     }
   </style>
 </head>
 <body>
 
-<h2 class="w3-text-teal">Drag and Drop Example with W3.CSS</h2>
-<p class="w3-text-grey">Drag the green square into the gray box:</p>
+<div class="w3-row">
+  <!-- Column for images -->
+  <div class="w3-half">
+    <div class="w3-center">
+      <img src="apple.jpg" id="img1" class="draggable" draggable="true" ondragstart="drag(event)">
+      <img src="banana.jpg" id="img2" class="draggable" draggable="true" ondragstart="drag(event)">
+      <img src="cherry.jpg" id="img3" class="draggable" draggable="true" ondragstart="drag(event)">
+      <img src="grape.jpg" id="img4" class="draggable" draggable="true" ondragstart="drag(event)">
+      <img src="orange.jpg" id="img5" class="draggable" draggable="true" ondragstart="drag(event)">
+      <img src="pear.jpg" id="img6" class="draggable" draggable="true" ondragstart="drag(event)">
+    </div>
+  </div>
 
-<div id="drag1" class="w3-green w3-center" draggable="true" ondragstart="drag(event)">Drag me</div>
-
-<div id="div1" class="w3-border w3-padding" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <!-- Column for words -->
+  <div class="w3-half">
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img1"><h3>Apple</h3></div>
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img2"><h3>Banana</h3></div>
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img3"><h3>Cherry</h3></div>
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img4"><h3>Grape</h3></div>
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img5"><h3>Orange</h3></div>
+    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img6"><h3>Pear</h3></div>
+  </div>
+</div>
 
 <script>
   function allowDrop(ev) {
@@ -43,10 +61,16 @@
   function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    var dropzone = ev.target.closest('.dropzone');
+    
+    if (dropzone.getAttribute('data-match') === data) {
+      ev.target.appendChild(document.getElementById(data));
+      dropzone.style.backgroundColor = "#d4edda"; // Green background to indicate correct match
+    } else {
+      alert("Incorrect match!");
+    }
   }
 </script>
 
 </body>
 </html>
-
