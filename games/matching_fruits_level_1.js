@@ -55,7 +55,7 @@ function drop(ev) {
   } else {
     attempts--;
     updateAttempts();
-    alert("Incorrect match! Attempts left: " + attempts);
+    
   }
 }
 
