@@ -2,18 +2,21 @@
 <html>
 <head>
   <title>Match the Word with the Picture</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     .draggable {
       width: 100px;
-      height: 100px;
+      height: 50px;
       margin: 10px;
       cursor: pointer;
+      text-align: center;
+      line-height: 50px;
+      background-color: #4CAF50;
+      color: white;
     }
     
     .dropzone {
-      width: 100%;
+      width: 100px;
       height: 100px;
       margin: 10px;
       padding: 10px;
@@ -28,25 +31,35 @@
 
 <div class="w3-row">
   <!-- Column for images -->
-  <div class="w3-half">
-    <div class="w3-center">
-      <img src="apple.png" id="img1" class="draggable" draggable="true" ondragstart="drag(event)">
-      <img src="banana.png" id="img2" class="draggable" draggable="true" ondragstart="drag(event)">
-      <img src="cherry.png" id="img3" class="draggable" draggable="true" ondragstart="drag(event)">
-      <img src="grape.png" id="img4" class="draggable" draggable="true" ondragstart="drag(event)">
-      <img src="orange.png" id="img5" class="draggable" draggable="true" ondragstart="drag(event)">
-      <img src="pear.png" id="img6" class="draggable" draggable="true" ondragstart="drag(event)">
+  <div class="w3-half w3-center">
+    <div class="dropzone" id="img1" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="apple.png" style="width:100px;height:100px;">
+    </div>
+    <div class="dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="banana.png" style="width:100px;height:100px;">
+    </div>
+    <div class="dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="cherry.png" style="width:100px;height:100px;">
+    </div>
+    <div class="dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="grape.png" style="width:100px;height:100px;">
+    </div>
+    <div class="dropzone" id="img5" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="orange.png" style="width:100px;height:100px;">
+    </div>
+    <div class="dropzone" id="img6" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pear.png" style="width:100px;height:100px;">
     </div>
   </div>
 
   <!-- Column for words -->
-  <div class="w3-half">
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img1"><h3>Apple</h3></div>
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img2"><h3>Banana</h3></div>
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img3"><h3>Cherry</h3></div>
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img4"><h3>Grape</h3></div>
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img5"><h3>Orange</h3></div>
-    <div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-match="img6"><h3>Pear</h3></div>
+  <div class="w3-half w3-center">
+    <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">Apple</div>
+    <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">Banana</div>
+    <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">Cherry</div>
+    <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">Grape</div>
+    <div class="draggable" id="word5" draggable="true" ondragstart="drag(event)">Orange</div>
+    <div class="draggable" id="word6" draggable="true" ondragstart="drag(event)">Pear</div>
   </div>
 </div>
 
@@ -64,8 +77,14 @@
     var data = ev.dataTransfer.getData("text");
     var dropzone = ev.target.closest('.dropzone');
     
-    if (dropzone.getAttribute('data-match') === data) {
-      ev.target.appendChild(document.getElementById(data));
+    // Matching logic based on ID
+    if ((data === "word1" && dropzone.id === "img1") ||
+        (data === "word2" && dropzone.id === "img2") ||
+        (data === "word3" && dropzone.id === "img3") ||
+        (data === "word4" && dropzone.id === "img4") ||
+        (data === "word5" && dropzone.id === "img5") ||
+        (data === "word6" && dropzone.id === "img6")) {
+      dropzone.appendChild(document.getElementById(data));
       dropzone.style.backgroundColor = "#d4edda"; // Green background to indicate correct match
     } else {
       alert("Incorrect match!");
