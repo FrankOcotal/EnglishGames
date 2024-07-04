@@ -1,32 +1,24 @@
 let score = 0;
-let timer = 5;
+let attempts = 5;
 let timerInterval;
 
 function updateScore() {
   document.getElementById('score').textContent = score;
 }
 
-function updateTimer() {
-  document.getElementById('timer').textContent = timer;
-  if (timer <= 0) {
-    clearInterval(timerInterval);
-    alert("Time's up! Restarting the game.");
+function updateAttempts() {
+  document.getElementById('attempts').textContent = attempts;
+  if (attempts <= 0) {
+    alert("No more attempts left! Restarting the game.");
     resetGame();
   }
 }
 
-function startTimer() {
-  timerInterval = setInterval(() => {
-    timer--;
-    updateTimer();
-  }, 1000);
-}
-
 function resetGame() {
   score = 0;
-  timer = 5;
+  attempts = 5;
   updateScore();
-  updateTimer();
+  updateAttempts();
   document.querySelectorAll('.draggable').forEach(elem => {
     elem.classList.remove('matched');
     document.querySelector('.w3-center:last-child').appendChild(elem);
@@ -34,7 +26,6 @@ function resetGame() {
   document.querySelectorAll('.dropzone img').forEach(img => {
     img.classList.remove('w3-opacity');
   });
-  startTimer();
 }
 
 function allowDrop(ev) {
@@ -63,7 +54,9 @@ function drop(ev) {
     score++;
     updateScore();
   } else {
-    alert("Incorrect match!");
+    attempts--;
+    updateAttempts();
+    alert("Incorrect match! Attempts left: " + attempts);
   }
 }
 
