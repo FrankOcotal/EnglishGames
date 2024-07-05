@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Matching Game Fruits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="description" content="TeacherBot Matching Games Fruits Elementary School Juegos para aprender ingles jugando Las Frutas">
+  <meta name="keywords" content="matching games, teacherbot,juego, frutas">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .draggable {
+      width: 100px;
+      height: 50px;
+      margin: 10px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 50px;
+      background-color: #4CAF50;
+      color: white;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dropzone {
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+      text-align: center;
+      line-height: 100px;
+      background-color: #f1f1f1;
+      display: inline-block;
+      position: relative;
+    }
+
+    .matched {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="w3-container">
+  <h2 class="w3-center">Matching Game</h2>
+  
+   <div class="w3-center">
+    <p>Score: <span id="score">0</span></p>
+    <p>Attempts left: <span id="attempts">5</span></p>
+  </div>
+
+  <!-- Dropzones with images inside w3-cards -->
+  <div class="w3-center">
+    <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pml/loma.png" style="width:100px;height:100px;">
+    </div>
+    <div class="w3-card dropzone" id="img2" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pml/lupa.png" style="width:100px;height:100px;">
+    </div>
+    <div class="w3-card dropzone" id="img4" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pml/pala.png" style="width:100px;height:100px;">
+    </div>
+    
+    <div class="w3-card dropzone" id="img3" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="pml/mapa.png" style="width:100px;height:100px;">
+    </div>
+    
+  </div>
+
+  <!-- Draggable words -->
+  <div class="w3-center w3-xlarge">
+    <div class="draggable" id="word2" draggable="true" ondragstart="drag(event)">loma</div>
+    <div class="draggable" id="word1" draggable="true" ondragstart="drag(event)">lupa</div>
+    <div class="draggable" id="word4" draggable="true" ondragstart="drag(event)">pala</div>
+    <div class="draggable" id="word3" draggable="true" ondragstart="drag(event)">mapa</div>
+   
+  </div>
+  
+ 
+</div>
+
+<script src="audio.js"></script>
+<script src="matching_fruits_level_1.js"></script>
+
+</body>
+</html>
