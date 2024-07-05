@@ -18,6 +18,9 @@ const matchingPairs = levels[currentLevel];
 
 function updateScore() {
   document.getElementById('score').textContent = score;
+  if (score === 4) {
+    redirectToNextPage();
+  }
 }
 
 function updateAttempts() {
@@ -68,6 +71,12 @@ function drop(ev) {
     playErrorSound();
   }
 }
+
+function redirectToNextPage() {
+  window.location.href = "pml2.html"; 
+}
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   resetGame();
