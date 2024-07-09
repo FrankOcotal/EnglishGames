@@ -1,0 +1,104 @@
+[
+  {
+    "pairs": {
+      "img1": "word1",
+      "img2": "word2",
+      "img3": "word3",
+      "img4": "word4"
+    },
+    "images": {
+      "img1": "zompopo.png",
+      "img2": "taza.png",
+      "img3": "azadon.png",
+      "img4": "manzana.png"
+    },
+    "words": {
+	  "word4": "manzana",
+	  "word6": "mansano",
+      "word1": "zompopo",
+	  "word5": "tasa",
+	  "word3": "azadon",
+	  "word2": "taza"
+      
+	  
+      
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word5",
+      "img2": "word6",
+      "img3": "word7",
+      "img4": "word8"
+    },
+    "images": {
+      "img1": "mazo.png",
+      "img2": "zapato.png",
+      "img3": "manzana.png",
+      "img4": "zompopo.png"
+    },
+    "words": {
+	  "word10": "asadon",
+      "word9": "zarpano",
+      "word6": "zapato",
+      "word7": "manzana",
+      "word8": "zompopo",
+      "word5": "mazo"
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word9",
+      "img2": "word10",
+      "img3": "word11",
+      "img4": "word12"
+    },
+    "images": {
+      "img1": "puma.png",
+      "img2": "pepe.png",
+      "img3": "pamela.png",
+      "img4": "muela.png"
+    },
+    "words": {
+	  "word13": "maula",
+      "word9": "puma",
+	  "word14": "peep",
+	  "word12": "muela",
+      "word10": "pepe",
+      "word11": "pamela"
+      
+	  
+    }
+  },
+  
+  {
+    "pairs": {
+      "img1": "word14",
+      "img2": "word15",
+      "img3": "word16",
+      "img4": "word17"
+    },
+    "images": {
+      "img1": "puma.png",
+      "img2": "pepe.png",
+      "img3": "paloma.png",
+      "img4": "mula.png"
+    },
+    "words": {
+	  "word18": "muela",
+      "word14": "puma",
+	  "word17": "mula",
+      "word16": "paloma",
+	  "word15": "pepe",
+      "word19": "pamela"
+      
+	  
+    }
+  } 
+  
+  
+  
+  
+]

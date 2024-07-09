@@ -1,0 +1,74 @@
+<! DOCTYPE html>
+<html>
+<head>
+  <title>Juegos para leer con P M L</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="description" content="TeacherBot Juegos para leer con P M y L en primer grado">
+  <meta name="keywords" content="matching juegos, teacherbot,juego, frutas, vocales, consonantes">
+  <link rel="stylesheet" href="/../css/w3.css">
+  <style>
+    .draggable {
+      width: 100px;
+      height: 50px;
+      margin: 10px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 50px;
+      background-color: #4CAF50;
+      color: white;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dropzone {
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+      text-align: center;
+      line-height: 100px;
+      background-color: #f1f1f1;
+      display: inline-block;
+      position: relative;
+    }
+
+    .matched {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background-color: #8BC34A;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="w3-container">
+  <h3 class="w3-center">Leer con P , M y L</h3>
+  
+  <div class="w3-center">
+    <p>Nivel: <span class="w3-xlarge w3-text-blue" id="level">1</span></p>
+    <p>Puntos: <span class="w3-xlarge w3-text-red" id="score">0</span></p>
+    <p>Oportunidades restantes: <span class="w3-xlarge w3-text-red" id="attempts">5</span></p>
+  </div>
+
+  <!-- Dropzones with images inside w3-cards -->
+  <div id="dropzones" class="w3-center">
+    <!-- Dropzones will be generated dynamically here -->
+  </div>
+
+  <!-- Draggable words -->
+  <div id="draggables" class="w3-center w3-xlarge">
+    <!-- Draggable words will be generated dynamically here -->
+  </div>
+</div>
+
+<script src="/js/audio.js"></script>
+<script src="/js/matcher.min.js"></script>
+
+</body>
+</html>
