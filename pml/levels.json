@@ -70,7 +70,7 @@
 	  
     }
   },
-  
+  //level 4
   {
     "pairs": {
       "img1": "word14",
@@ -79,18 +79,20 @@
       "img4": "word17"
     },
     "images": {
-      "img1": "puma.png",
-      "img2": "pepe.png",
-      "img3": "pamela.png",
-      "img4": "muela.png"
+      "img1": "paloma.png",
+      "img2": "mula.png",
+      "img3": "puma.png",
+      "img4": "loma.png"
     },
     "words": {
-	  "word14": "maula",
-      "word15": "puma",
-	  "word16": "peep",
-	  "word17": "muela",
-      "word18": "pepe",
-      "word19": "pamela"
+	"word17": "loma",
+	"word14": "paloma",
+	"word19": "pamela",
+         "word15": "mula",
+	"word18": "malo",
+	  "word16": "puma"
+	 
+        
       
 	  
     }
