@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sopa de Letras</title>
+    <title>Creador de Sopas de Letras</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sopa de Letras</h1>
-    <div id="word-search"></div>
-    <div id="word-list">
-        <h2>Palabras a buscar:</h2>
-        <ul id="words">
-            <!-- Las palabras serán añadidas aquí -->
-        </ul>
+    <h1>Creador de Sopas de Letras</h1>
+    <textarea id="words-input" placeholder="Ingrese hasta 7 palabras separadas por comas"></textarea>
+    <button id="generate-button">Generar Sopa de Letras</button>
+    <div id="word-search-container">
+        <div id="word-search"></div>
+        <div id="word-list">
+            <h2>Palabras a buscar:</h2>
+            <ul id="words">
+                <!-- Las palabras serán añadidas aquí -->
+            </ul>
+        </div>
     </div>
+    <button id="export-button">Exportar como PNG</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

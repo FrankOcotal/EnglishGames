@@ -1,8 +1,8 @@
-const words = ['HTML', 'CSS', 'JAVASCRIPT', 'WORD', 'SEARCH'];
-const gridSize = 10;
+let gridSize = 10;
 let grid = [];
 let selectedCells = [];
 let isSelecting = false;
+let words = [];
 
 function createGrid() {
     grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(''));
@@ -135,12 +135,33 @@ function clearSelectedCells() {
     selectedCells = [];
 }
 
-function init() {
+function exportAsPNG() {
+    const wordSearchContainer = document.getElementById('word-search-container');
+    html2canvas(wordSearchContainer).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'sopa_de_letras.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+function generateWordSearch() {
+    const wordsInput = document.getElementById('words-input').value;
+    words = wordsInput.split(',').map(word => word.trim().toUpperCase()).filter(word => word.length > 0).slice(0, 7);
+    if (words.length === 0) {
+        alert('Por favor, ingrese al menos una palabra.');
+        return;
+    }
     createGrid();
     words.forEach(word => placeWord(word));
     fillGrid();
     renderGrid();
     renderWords();
+}
+
+function init() {
+    document.getElementById('generate-button').addEventListener('click', generateWordSearch);
+    document.getElementById('export-button').addEventListener('click', exportAsPNG);
 }
 
 document.addEventListener('DOMContentLoaded', init);
