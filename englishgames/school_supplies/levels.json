@@ -1,0 +1,104 @@
+[
+  {
+    "pairs": {
+      "img1": "word1",
+      "img2": "word2",
+      "img3": "word3",
+      "img4": "word4"
+    },
+    "images": {
+      "img1": "/img/school_supplies/ruler.png",
+      "img2": "/img/school_supplies/pencil.png",
+      "img3": "/img/school_supplies/eraser.png",
+      "img4": "/img/school_supplies/notebook.png"
+    },
+    "words": {
+      "word1": "ruler",
+	  "word3": "eraser",
+	  "word6": "glue",
+      "word2": "pencil",
+      "word5": "pen",
+	  "word4": "notebook"
+      
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word5",
+      "img2": "word6",
+      "img3": "word7",
+      "img4": "word8"
+    },
+    "images": {
+      "img1": "/img/school_supplies/ruler.png",
+      "img2": "/img/school_supplies/eraser.png",
+      "img3": "/img/school_supplies/scissors.png",
+      "img4": "/img/school_supplies/glue.png"
+    },
+    "words": {
+	  "word10": "erased",
+      "word9": "pencil",
+      "word6": "eraser",
+      "word7": "scissors",
+      "word8": "glue",
+      "word5": "ruler"
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word9",
+      "img2": "word10",
+      "img3": "word11",
+      "img4": "word12"
+    },
+    "images": {
+      "img1": "/img/school_supplies/desk.png",
+      "img2": "/img/school_supplies/scissors.png",
+      "img3": "/img/school_supplies/eraser.png",
+      "img4": "/img/school_supplies/notebook.png"
+    },
+    "words": {
+	  "word11": "eraser",
+	  "word13": "pencil",
+      "word9": "desk",
+	  "word14": "ruler",
+	  "word12": "notebook",
+      "word10": "scissors"
+      
+      
+	  
+    }
+  },
+  
+  {
+    "pairs": {
+      "img1": "word14",
+      "img2": "word15",
+      "img3": "word16",
+      "img4": "word17"
+    },
+    "images": {
+      "img1": "/img/school_supplies/classroom.png",
+      "img2": "/img/school_supplies/crayon.png",
+      "img3": "/img/school_supplies/desk.png",
+      "img4": "/img/school_supplies/scissors.png"
+    },
+    "words": {
+	  "word18": "eraser",
+      "word14": "classroom",
+	  "word17": "scissors",
+	  "word15": "crayon",
+      "word16": "desk",
+	  
+      "word19": "notebook"
+      
+	  
+    }
+  } 
+  
+  
+  
+  
+]
