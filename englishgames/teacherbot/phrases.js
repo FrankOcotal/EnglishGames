@@ -25,8 +25,5 @@ var levelPhrases = {
     'this is a lion': 'lion.png',
 	'this is an owl': 'owl.png',
   },
-  4: {
-    
-    'I love to sing because it\'s fun': 'singing.png',
-  }
+ 
 };
