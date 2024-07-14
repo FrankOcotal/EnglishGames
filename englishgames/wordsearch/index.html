@@ -21,7 +21,20 @@
     
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 </head>
-<body class="w3-container">
+<body>
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+<div class="w3-blue">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+  </div>
+
+    
+
+    <div class="w3-container">
     <h3>Creador de Sopas de Letras</h3>
     
     <textarea class="w3-responsive" id="words-input" placeholder="Ingrese hasta 7 palabras separadas por comas"></textarea>
@@ -51,5 +64,18 @@
     <p>Una de las características más destacadas es la capacidad de exportar la sopa de letras generada como una imagen PNG. Esto permite imprimir la sopa de letras, compartirla digitalmente o 
         incluirla en materiales educativos sin perder calidad.</p>
 </div>
+
+    </div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+         
 </body>
 </html>
