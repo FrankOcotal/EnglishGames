@@ -43,17 +43,26 @@ function createInteractiveElement(element) {
             })
         ],
         listeners: {
+            start(event) {
+                // Opcional: Añadir algún estilo o clase durante el arrastre
+            },
             move(event) {
                 const x = (parseFloat(element.getAttribute('data-x')) || 0) + event.dx;
                 const y = (parseFloat(element.getAttribute('data-y')) || 0) + event.dy;
                 element.style.transform = `translate(${x}px, ${y}px)`;
                 element.setAttribute('data-x', x);
                 element.setAttribute('data-y', y);
+            },
+            end(event) {
+                // Opcional: Limpiar estilos o clases después del arrastre
             }
         }
     }).resizable({
         edges: { left: true, right: true, bottom: true, top: true },
         listeners: {
+            start(event) {
+                // Opcional: Añadir algún estilo o clase durante el redimensionamiento
+            },
             move(event) {
                 let { x, y } = element.dataset;
                 x = (parseFloat(x) || 0) + event.deltaRect.left;
@@ -64,12 +73,15 @@ function createInteractiveElement(element) {
                     transform: `translate(${x}px, ${y}px)`
                 });
                 Object.assign(element.dataset, { x, y });
-                
+
                 // Ajustar el tamaño de la fuente proporcionalmente
                 if (element.classList.contains('texto-editable')) {
                     const fontSize = textSizeSelect.value;
                     element.style.fontSize = `${fontSize}px`;
                 }
+            },
+            end(event) {
+                // Opcional: Limpiar estilos o clases después del redimensionamiento
             }
         }
     });
