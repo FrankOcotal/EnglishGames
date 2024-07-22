@@ -1,93 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="w3.css" />
-    <style>
-        img {
-            width: 270px;
-            height: auto;
-        }
-        #resultImage {
-            display: none;
-            width: 100px;
-            height: auto;
-            margin-top: 20px;
-        }
-        #phraseImage {
-            display: none;
-            width: 150px;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
+  <title>TeacherBot : Juegos para Aprender a Leer</title>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6TBPL3W8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E6TBPL3W8G');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6843845448180201"
+     crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="description" content="teacherbot.xyz encuentra juegos  y recursos para aprender ingles y español, creador de 
+  sopas de letras en español e inglés , flashcards animales , objetos de clases y verbos, reconocimiento de voz bot">
+  <link rel="stylesheet" href="css/w3.css">
+  <style>
+  a { text-decoration:none}
+  img {width: 150px; height: auto}
+  </style>
 </head>
-<body>
-    <!-- Header with level display -->
-    <div class="w3-top w3-center">
-        <p class="w3-xlarge w3-text-blue" id="level">Level: 1</p>
-    </div>
+<body class="w3-container">
 
-    <br><br><br>
+<div class="w3-card-2 w3-padding-16 w3-center w3-margin w3-blue">
+<a href="juegos/index.html"><img class="w3-image" alt="teacherbot.xyz"src="spanish.png"></a>
+</div>
+<div class="w3-card-2 w3-padding-16 w3-center w3-margin w3-blue">
+<h3><a href="englishgames/index.html">Juegos en Ingles</a></h3>
+</div>
+<div class="w3-card-2 w3-padding-16 w3-center w3-margin w3-blue">
+<h3><a href="englishgames/wordsearch/index.html">Creador de Sopa de Letras</a></h3>
+</div>
 
-    <!-- Main content -->
-    <div class="w3-container w3-center">
-        <div class="w3-right">
-            <img id="phraseImage" src="" alt="Phrase Image" />
-        </div>
-        <img id="logo" class="w3-image w3-centered" src="logo.png" />
-        <p></p>
-        <button class="w3-btn w3-border w3-grey" id="testBtn">Start new test</button>
-        <div>
-            <p class="w3-large" id="correctCount">Correct: 0</p>
-            <p class="w3-large" id="incorrectCount">Incorrect: 0</p>
-            <img id="resultImage" src="" alt="Result Image" />
-        </div>
-    </div>
+<div class="w3-card-2 w3-padding-16 w3-center w3-margin w3-blue">
+<h3><a href="englishgames/matching_maker/index.html">Creador de Matching</a></h3>
+</div>
 
-    <!-- Modal for Name Input -->
-    <div id="nameModal" class="w3-modal">
-        <div class="w3-modal-content w3-card-4">
-            <header class="w3-container w3-blue">
-                <span onclick="document.getElementById('nameModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <h2>Please Enter Your Name</h2>
-            </header>
-            <div class="w3-container">
-                <input type="text" id="nameInput" class="w3-input w3-border" placeholder="Enter your name" />
-                <button class="w3-btn w3-blue" onclick="submitName()">Submit</button>
-            </div>
-        </div>
-    </div>
+<div class="w3-card-2 w3-padding-16 w3-center w3-margin w3-blue">
+<h3><a href="englishgames/crossword/index.html">Creador de Crossword</a></h3>
+</div>
 
-    <!-- Modal for Greeting -->
-    <div id="greetModal" class="w3-modal">
-        <div class="w3-modal-content w3-card-4">
-            <header class="w3-container w3-blue">
-                <span onclick="document.getElementById('greetModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <h2>Greeting</h2>
-            </header>
-            <div class="w3-container">
-                <p id="greetMessage"></p>
-            </div>
-        </div>
-    </div>
+  <p class="w3-large">  Descubre TeacherBot.xyz, la web app definitiva para encontrar flashcards, recursos educativos y 
+    juegos interactivos diseñados para enseñar y aprender inglés y español. Perfecto para niños de primaria y jóvenes de secundaria, TeacherBot.xyz ofrece herramientas divertidas y efectivas para mejorar tus habilidades lingüísticas. Ya seas profesor o estudiante, TeacherBot.xyz facilita el aprendizaje 
+    con métodos innovadores y entretenidos.</p>
 
-    <!-- Modal for Question -->
-    <div id="questionModal" class="w3-modal">
-        <div class="w3-modal-content w3-card-4">
-            <header class="w3-container w3-blue">
-                <span onclick="document.getElementById('questionModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <h2>Question</h2>
-            </header>
-            <div class="w3-container">
-                <p id="questionText"></p>
-                <div id="answerButtons"></div>
-            </div>
-        </div>
-    </div>
-
-    <script type="module" src="main.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
