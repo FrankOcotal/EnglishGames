@@ -25,10 +25,14 @@
     </style>
 </head>
 <body>
+    <!-- Header with level display -->
     <div class="w3-top w3-center">
         <p class="w3-xlarge w3-text-blue" id="level">Level: 1</p>
     </div>
+
     <br><br><br>
+
+    <!-- Main content -->
     <div class="w3-container w3-center">
         <div class="w3-right">
             <img id="phraseImage" src="" alt="Phrase Image" />
@@ -42,6 +46,48 @@
             <img id="resultImage" src="" alt="Result Image" />
         </div>
     </div>
+
+    <!-- Modal for Name Input -->
+    <div id="nameModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('nameModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2>Please Enter Your Name</h2>
+            </header>
+            <div class="w3-container">
+                <input type="text" id="nameInput" class="w3-input w3-border" placeholder="Enter your name" />
+                <button class="w3-btn w3-blue" onclick="submitName()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Greeting -->
+    <div id="greetModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('greetModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2>Greeting</h2>
+            </header>
+            <div class="w3-container">
+                <p id="greetMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Question -->
+    <div id="questionModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('questionModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2>Question</h2>
+            </header>
+            <div class="w3-container">
+                <p id="questionText"></p>
+                <div id="answerButtons"></div>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="main.js"></script>
 </body>
 </html>
