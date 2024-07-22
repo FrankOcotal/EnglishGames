@@ -3,6 +3,10 @@ import { levelPhrases } from './phrases.js';
 function updateScores() {
   correctCountElem.textContent = 'Correct: ' + window.correctCount;
   incorrectCountElem.textContent = 'Incorrect: ' + window.incorrectCount;
+  
+  // Guardar puntos en localStorage
+  localStorage.setItem('correctCount', window.correctCount);
+  localStorage.setItem('incorrectCount', window.incorrectCount);
 }
 
 function updateLevel() {
@@ -16,6 +20,10 @@ function randomPhrase() {
 }
 
 function startGame() {
+  // Recuperar puntos del localStorage
+  window.correctCount = parseInt(localStorage.getItem('correctCount')) || 0;
+  window.incorrectCount = parseInt(localStorage.getItem('incorrectCount')) || 0;
+
   updateLevel(); // Inicializa el nivel mostrado
 }
 

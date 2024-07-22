@@ -8,12 +8,19 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var recognitionTimeout;
+var attemptCount = 0; // Contador de intentos
 
 function initSpeechRecognition() {
   // Función para inicializar el reconocimiento de voz
 }
 
 function testSpeech() {
+  if (attemptCount >= 5) {
+    alert("You've reached the maximum number of attempts. Restarting the game.");
+    restartGame(); // Reiniciar el juego
+    return;
+  }
+
   window.testBtn.disabled = true;
   window.testBtn.textContent = 'Test in progress';
 
@@ -61,6 +68,8 @@ function testSpeech() {
     }
     updateScores();
 
+    attemptCount++; // Incrementar el contador de intentos
+
     setTimeout(function() {
       window.testBtn.disabled = false;
       window.testBtn.textContent = 'Start new test';
@@ -92,6 +101,25 @@ function handleNoSpeechDetected() {
   updateScores();
   window.testBtn.disabled = false;
   window.testBtn.textContent = 'Start new test';
+}
+
+function restartGame() {
+  // Restablecer los valores
+  window.correctCount = 0;
+  window.incorrectCount = 0;
+  window.currentLevel = 1;
+  attemptCount = 0;
+
+  // Guardar los valores en localStorage
+  localStorage.setItem('correctCount', window.correctCount);
+  localStorage.setItem('incorrectCount', window.incorrectCount);
+
+  // Actualizar el nivel y los puntajes
+  updateLevel();
+  updateScores();
+
+  // Mostrar el mensaje de reinicio
+  alert("The game has been restarted.");
 }
 
 export { initSpeechRecognition, testSpeech };
