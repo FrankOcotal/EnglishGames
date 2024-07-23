@@ -30,13 +30,14 @@ function greetPlayer(name) {
 function askQuestion(index) {
   return new Promise((resolve) => {
     const question = questions[index];
-    var msg = new SpeechSynthesisUtterance(question.question);
-    msg.lang = 'en-US';
-    msg.rate = 0.8; // Ajusta la velocidad aquí
-    speechSynthesis.speak(msg);
 
-    msg.onend = () => {
-      setTimeout(() => { // Agregar una espera de 2 segundos
+    setTimeout(() => {
+      var msg = new SpeechSynthesisUtterance(question.question);
+      msg.lang = 'en-US';
+      msg.rate = 0.8; // Ajusta la velocidad aquí
+      speechSynthesis.speak(msg);
+
+      msg.onend = () => {
         const questionModal = document.getElementById('questionModal');
         const questionText = document.getElementById('questionText');
         const answerButtons = document.getElementById('answerButtons');
@@ -63,8 +64,8 @@ function askQuestion(index) {
         } else {
           console.error('Modal elements not found');
         }
-      }, 2000); // Espera de 2 segundos
-    };
+      };
+    }, 2000); // Espera de 2 segundos antes de usar TTS
   });
 }
 
