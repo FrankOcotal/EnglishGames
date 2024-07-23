@@ -51,7 +51,12 @@ function askQuestion(index) {
           question.answers.forEach(answer => {
             const button = document.createElement('button');
             button.className = 'w3-btn w3-blue w3-margin-bottom';
-            button.textContent = answer;
+            const img = document.createElement('img');
+            img.src = answer;
+            img.alt = 'Answer';
+            img.width = 50; // Establecer el tamaño de la imagen
+            img.height = 50; // Establecer el tamaño de la imagen
+            button.appendChild(img);
             button.onclick = () => {
               questionModal.style.display = 'none';
               resolve(answer);
@@ -65,7 +70,7 @@ function askQuestion(index) {
           console.error('Modal elements not found');
         }
       };
-    }, 2000); // Espera de 2 segundos antes de usar TTS
+    }, 1000); // Espera de 2 segundos antes de usar TTS
   });
 }
 
