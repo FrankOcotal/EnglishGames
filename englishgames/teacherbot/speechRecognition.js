@@ -2,7 +2,6 @@ import { playApplause, playError } from './audio.js';
 import { updateScores, updateLevel, randomPhrase } from './gameUtils.js';
 import { levelPhrases } from './phrases.js';
 
-// Definir SpeechRecognition y otros objetos relacionados
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
@@ -71,7 +70,10 @@ function testSpeech() {
     attemptCount++; // Incrementar el contador de intentos
 
     setTimeout(function() {
-      window.testBtn.disabled = false;
+      // Activar el botón solo si todas las preguntas han sido respondidas
+      if (attemptCount >= questions.length) {
+        window.testBtn.disabled = false;
+      }
       window.testBtn.textContent = 'Start new test';
     }, 2000);
   }
