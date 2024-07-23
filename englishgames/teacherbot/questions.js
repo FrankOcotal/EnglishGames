@@ -16,6 +16,16 @@ export const questions = [
       '../../img/dad.png'
     ],
     correctAnswer: '../../img/dad.png'
+  },
+  
+   {
+    question: "This candy is cheaper than that one",
+    answers: [
+      '../../img/priti.png', 
+      '../../img/pretty.png', 
+      '../../img/prettier.png'
+    ],
+    correctAnswer: '../../img/prettier.png'
   }
   // Añade más preguntas según sea necesario
 ];
