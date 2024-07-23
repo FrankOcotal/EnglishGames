@@ -9,11 +9,11 @@ var levelPhrases = {
     'desk': '../../img/desk.png',
   },
   2: {
-    'pencil': '../../img/dad.png',
-    'notebook': '../../img/mom.png',
-    'ruler': '../../img/sister.png',
-    'glue': '../../img/sister.png',
-    'eraser': '../../img/sister.png',
+    'dad': '../../img/dad.png',
+    'mom': '../../img/mom.png',
+    'sister': '../../img/sister.png',
+    'brother': '../../img/brother.png',
+    'grandma': '../../img/grandma.png',
   },
   3: {
     'one': '../../img/one.png',
