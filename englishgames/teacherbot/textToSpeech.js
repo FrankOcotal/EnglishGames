@@ -45,7 +45,7 @@ function askQuestion(index) {
       // Crear botones para cada respuesta
       question.answers.forEach(answer => {
         const button = document.createElement('button');
-        button.className = 'w3-btn w3-blue w3-margin-bottom';
+        button.className = 'w3-btn w3-blue w3-margin-bottom w3-border w3-hover-red';
         button.textContent = answer;
         button.onclick = () => {
           questionModal.style.display = 'none';
