@@ -19,7 +19,7 @@ export const questions = [
   },
   
    {
-    question: "This candy is cheaper than that one",
+    question: "Your doll is prettier than my doll",
     answers: [
       '../../img/priti.png', 
       '../../img/pretty.png', 
