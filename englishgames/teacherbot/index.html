@@ -22,6 +22,15 @@
             height: auto;
             margin-top: 20px;
         }
+		
+		#questionModal {
+            display: none;
+        }
+	
+        #answerButtons img {
+            width: 150px; /* Ajuste del tamaño de las imágenes a 150px */
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -68,26 +77,26 @@
                 <span onclick="document.getElementById('greetModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                 <h2>Greeting</h2>
             </header>
-            <div class="w3-container w3-large">
+            <div class="w3-container">
                 <p id="greetMessage"></p>
             </div>
         </div>
     </div>
 
-    
-  <div id="questionModal" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal">
-        <h2 id="questionText"></h2>
-      </header>
-      <div class="w3-container">
-        <div id="answerButtons"></div>
-      </div>
-      <footer class="w3-container w3-teal">
-        <p>Choose the correct answer</p>
-      </footer>
+    <div id="questionModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4">
+            <header class="w3-container w3-teal">
+                <h2 id="questionText"></h2>
+            </header>
+            <div class="w3-container">
+                <div id="answerButtons" class="w3-bar"></div>
+            </div>
+            <footer class="w3-container w3-teal">
+                <p>Choose the correct answer</p>
+            </footer>
+        </div>
     </div>
-  </div>
+
     <script type="module" src="main.js"></script>
 </body>
 </html>
