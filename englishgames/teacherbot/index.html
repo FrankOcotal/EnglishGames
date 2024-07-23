@@ -74,20 +74,20 @@
         </div>
     </div>
 
-    <!-- Modal for Question -->
-    <div id="questionModal" class="w3-modal">
-        <div class="w3-modal-content w3-card-4">
-            <header class="w3-container w3-blue">
-                <span onclick="document.getElementById('questionModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <h2>Question</h2>
-            </header>
-            <div class="w3-container">
-                <p id="questionText"></p>
-                <div id="answerButtons"></div>
-            </div>
-        </div>
+    
+  <div id="questionModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal">
+        <h2 id="questionText"></h2>
+      </header>
+      <div class="w3-container">
+        <div id="answerButtons"></div>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Choose the correct answer</p>
+      </footer>
     </div>
-
+  </div>
     <script type="module" src="main.js"></script>
 </body>
 </html>
