@@ -57,8 +57,12 @@ async function showNextQuestion(index) {
     window.attemptsLeft = 5;
     window.currentLevel = 1;
     updateLevel();
+    window.testBtn.disabled = false; // Activar el botón "Start new test"
   }
 }
+
+// Desactivar el botón "Start new test" al inicio del juego
+window.testBtn.disabled = true;
 
 testBtn.addEventListener('click', testSpeech);
 initGame();
