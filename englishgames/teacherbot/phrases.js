@@ -13,7 +13,7 @@ var levelPhrases = {
     'mom': '../../img/mom.png',
     'sister': '../../img/sister.png',
     'brother': '../../img/brother.png',
-    'grandma': '../../img/grandma.png',
+    'grandpa': '../../img/grandpa.png',
   },
   3: {
     'one': '../../img/one.png',

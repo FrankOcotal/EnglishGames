@@ -1,6 +1,7 @@
 export const questions = [
   {
     question: "I have a pencil",
+	clue: "I have a .....",
     answers: [
       '../../img/pencil.png', 
       '../../img/eraser.png', 
@@ -10,6 +11,7 @@ export const questions = [
   },
   {
     question: "this is my dad",
+	clue: "This is my ......",
     answers: [
       '../../img/grandpa.png', 
       '../../img/glue.png', 
@@ -20,6 +22,7 @@ export const questions = [
   
    {
     question: "Your doll is prettier than my doll",
+	clue: "Your doll is ..... than my doll",
     answers: [
       '../../img/priti.png', 
       '../../img/pretty.png', 
