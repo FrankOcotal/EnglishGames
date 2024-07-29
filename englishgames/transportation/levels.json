@@ -1,0 +1,100 @@
+[
+  {
+    "pairs": {
+      "img1": "word1",
+      "img2": "word2",
+      "img3": "word3",
+      "img4": "word4"
+    },
+    "images": {
+      "img1": "/img/car.png",
+      "img2": "/img/train.png",
+      "img3": "/img/airplane.png",
+      "img4": "/img/notebook.png"
+    },
+    "words": {
+      "word6": "carro",
+      "word2": "train",
+	  "word1": "car",
+      "word4": "notebook",
+	  "word3": "airplane",
+	  "word5": "ship"
+      }
+  },
+  {
+    "pairs": {
+      "img1": "word5",
+      "img2": "word6",
+      "img3": "word7",
+      "img4": "word8"
+    },
+    "images": {
+      "img1": "/img/car.png",
+      "img2": "/img/ship.png",
+      "img3": "/img/bicycle.png",
+      "img4": "/img/airplane.png"
+    },
+    "words": {
+	  "word10": "train",
+	  "word8": "airplane",
+      "word9": "truck",
+	  "word5": "car",
+      "word6": "ship",
+      "word7": "bicycle"
+      }
+  },
+  {
+    "pairs": {
+      "img1": "word9",
+      "img2": "word10",
+      "img3": "word11",
+      "img4": "word12"
+    },
+    "images": {
+	  "img1": "/img/truck.png",
+      "img2": "/img/airplane.png",
+      "img3": "/img/bicycle.png",
+      "img4": "/img/ship.png"
+    },
+    "words": {
+	  "word11": "bicycle",
+	  "word12": "ship",
+	  "word13": "car",
+      "word9": "truck",
+	  "word14": "train",
+	  "word10": "airplane"
+      
+      
+	  
+    }
+  },
+  
+  {
+    "pairs": {
+      "img1": "word14",
+      "img2": "word15",
+      "img3": "word16",
+      "img4": "word17"
+    },
+    "images": {
+      "img1": "/img/bicycle.png",
+      "img2": "/img/airplane.png",
+      "img3": "/img/ship.png",
+      "img4": "/img/truck.png"
+    },
+    "words": {
+	  "word15": "airplane",
+	  "word18": "car",
+      "word14": "bicycle",
+	  "word17": "truck",
+	  "word16": "ship",
+	  "word19": "train"
+      
+	  
+    }
+  } 
+  
+  
+  
+  
+]
