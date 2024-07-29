@@ -7,10 +7,10 @@
       "img4": "word4"
     },
     "images": {
-      "img1": "/img/school_supplies/ruler.png",
-      "img2": "/img/school_supplies/pencil.png",
-      "img3": "/img/school_supplies/eraser.png",
-      "img4": "/img/school_supplies/notebook.png"
+      "img1": "/img/ruler.png",
+      "img2": "/img/pencil.png",
+      "img3": "/img/eraser.png",
+      "img4": "/img/notebook.png"
     },
     "words": {
       "word1": "ruler",
@@ -31,10 +31,10 @@
       "img4": "word8"
     },
     "images": {
-      "img1": "/img/school_supplies/ruler.png",
-      "img2": "/img/school_supplies/eraser.png",
-      "img3": "/img/school_supplies/scissors.png",
-      "img4": "/img/school_supplies/glue.png"
+      "img1": "/img/ruler.png",
+      "img2": "/img/eraser.png",
+      "img3": "/img/scissors.png",
+      "img4": "/img/glue.png"
     },
     "words": {
 	  "word10": "erased",
@@ -54,10 +54,10 @@
       "img4": "word12"
     },
     "images": {
-      "img1": "/img/school_supplies/desk.png",
-      "img2": "/img/school_supplies/scissors.png",
-      "img3": "/img/school_supplies/eraser.png",
-      "img4": "/img/school_supplies/notebook.png"
+	"img1": "/img/desk.png",
+      "img2": "/img/scissors.png",
+      "img3": "/img/eraser.png",
+      "img4": "/img/notebook.png"
     },
     "words": {
 	  "word11": "eraser",
@@ -80,10 +80,10 @@
       "img4": "word17"
     },
     "images": {
-      "img1": "/img/school_supplies/classroom.png",
-      "img2": "/img/school_supplies/crayon.png",
-      "img3": "/img/school_supplies/desk.png",
-      "img4": "/img/school_supplies/scissors.png"
+      "img1": "/img/classroom.png",
+      "img2": "/img/crayon.png",
+      "img3": "/img/desk.png",
+      "img4": "/img/scissors.png"
     },
     "words": {
 	  "word18": "eraser",
