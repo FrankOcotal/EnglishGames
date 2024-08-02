@@ -1,0 +1,105 @@
+[
+  {
+    "pairs": {
+      "img1": "word1",
+      "img2": "word2",
+      "img3": "word3",
+      "img4": "word4"
+    },
+    "images": {
+      "img1": "/img/mom.png",
+      "img2": "/img/sister.png",
+      "img3": "/img/dad.png",
+      "img4": "/img/brother.png"
+    },
+    "words": {
+	  "word4": "brother",
+      "word1": "mom",
+	  "word3": "dad",
+	  "word6": "grandpa",
+      "word2": "sister",
+      "word5": "grandma"
+	  
+      
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word5",
+      "img2": "word6",
+      "img3": "word7",
+      "img4": "word8"
+    },
+    "images": {
+      "img1": "/img/sister.png",
+      "img2": "/img/brother.png",
+      "img3": "/img/grandma.png",
+      "img4": "/img/grandpa.png"
+    },
+    "words": {
+	  
+	  "word8": "grandpa",
+	  "word7": "grandma",
+	  "word10": "dad",
+	  "word6": "brother",
+      "word9": "mom",
+      "word5": "sister"
+      
+    }
+  },
+  {
+    "pairs": {
+      "img1": "word9",
+      "img2": "word10",
+      "img3": "word11",
+      "img4": "word12"
+    },
+    "images": {
+      "img1": "/img/mom.png",
+      "img2": "/img/grandma.png",
+      "img3": "/img/sister.png",
+      "img4": "/img/dad.png"
+    },
+    "words": {
+	  "word11": "sister",
+	  "word12": "dad",
+	  "word13": "brother",
+	  "word14": "grandpa",
+      "word9": "mom",
+	  "word10": "grandma"
+      
+      
+	  
+    }
+  },
+  
+  {
+    "pairs": {
+      "img1": "word14",
+      "img2": "word15",
+      "img3": "word16",
+      "img4": "word17"
+    },
+    "images": {
+      "img1": "/img/dad.png",
+      "img2": "/img/grandpa.png",
+      "img3": "/img/sister.png",
+      "img4": "/img/brother.png"
+    },
+    "words": {
+	  "word18": "grandma",
+	  "word17": "brother",
+	  "word14": "dad",
+      "word16": "sister",
+	  "word19": "pencil",
+	  "word15": "grandpa"
+      
+	  
+    }
+  } 
+  
+  
+  
+  
+]
