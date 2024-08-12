@@ -18,14 +18,13 @@
     <!-- Google Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6843845448180201" crossorigin="anonymous"></script>
 
-    <!-- CSS Minimalista -->
-    <link rel="stylesheet" href="css/w3.css">
+    <!-- W3.CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
             background-color: #f4f4f4;
@@ -33,64 +32,65 @@
 
         h1, h2, h3 {
             color: #444;
-            text-align: center;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin: 20px 0;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        a {
-            text-decoration: none;
-            color: #1e88e5;
-            font-weight: bold;
-        }
-
-        a:hover {
-            color: #0056b3;
         }
 
         .content {
             margin: 20px 0;
             text-align: justify;
         }
+
+        .w3-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+
+        img.header-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>TeacherBot.xyz</h1>
-        <p>Juegos y recursos educativos para aprender inglés y español</p>
+
+    <!-- Top Menu -->
+    <div class="w3-top w3-bar w3-blue">
+        <a href="#" class="w3-bar-item w3-button w3-hover-light-blue">Inicio</a>
+        <a href="#about" class="w3-bar-item w3-button w3-hover-light-blue">Acerca de</a>
+        <a href="#services" class="w3-bar-item w3-button w3-hover-light-blue">Servicios</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-hover-light-blue">Contacto</a>
+    </div>
+
+    <!-- Header Image -->
+    <header class="w3-container w3-center w3-padding-64">
+        <img src="ruta_de_tu_imagen.jpg" alt="Imagen de cabecera" class="header-image">
     </header>
 
+    <!-- Acerca de -->
+    <section id="about" class="w3-container w3-padding-64">
+        <h2 class="w3-center">Acerca de TeacherBot.xyz</h2>
+        <div class="w3-content w3-padding">
+            <p class="w3-large">TeacherBot.xyz es la web app definitiva para encontrar flashcards, recursos educativos y juegos interactivos diseñados para enseñar y aprender inglés y español. Perfecto para niños de primaria y jóvenes de secundaria, TeacherBot.xyz ofrece herramientas divertidas y efectivas para mejorar tus habilidades lingüísticas. Ya seas profesor o estudiante, TeacherBot.xyz facilita el aprendizaje con métodos innovadores y entretenidos.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <main>
-        <section class="card">
-            <h2><a href="englishgames/index.html">Juegos en Inglés</a></h2>
+        <section class="w3-card w3-padding-32 w3-margin w3-white">
+            <h3 class="w3-center"><a href="englishgames/index.html">Juegos en Inglés</a></h3>
         </section>
 
-        <section class="card">
-            <h2><a href="flashcards/index.html">Flashcards</a></h2>
+        <section class="w3-card w3-padding-32 w3-margin w3-white">
+            <h3 class="w3-center"><a href="flashcards/index.html">Flashcards</a></h3>
         </section>
 
-        <section class="card">
-            <h2><a href="englishgames/wordsearch/index.html">Crear Sopa de Letras</a></h2>
-        </section>
-
-        <section class="content">
-            <p>Descubre TeacherBot.xyz, la web app definitiva para encontrar flashcards, recursos educativos y juegos interactivos diseñados para enseñar y aprender inglés y español. Perfecto para niños de primaria y jóvenes de secundaria, TeacherBot.xyz ofrece herramientas divertidas y efectivas para mejorar tus habilidades lingüísticas. Ya seas profesor o estudiante, TeacherBot.xyz facilita el aprendizaje con métodos innovadores y entretenidos.</p>
+        <section class="w3-card w3-padding-32 w3-margin w3-white">
+            <h3 class="w3-center"><a href="englishgames/wordsearch/index.html">Crear Sopa de Letras</a></h3>
         </section>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="w3-center w3-padding-16 w3-light-grey">
         <p>&copy; 2024 TeacherBot.xyz. Todos los derechos reservados.</p>
     </footer>
 
