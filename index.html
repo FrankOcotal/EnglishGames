@@ -34,6 +34,28 @@
             color: #444;
         }
 
+        .header-content {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .header-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
         .content {
             margin: 20px 0;
             text-align: justify;
@@ -42,12 +64,6 @@
         .w3-card:hover {
             transform: scale(1.05);
             transition: transform 0.2s;
-        }
-
-        img.header-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
         }
     </style>
 </head>
@@ -61,9 +77,12 @@
         <a href="#contact" class="w3-bar-item w3-button w3-hover-light-blue">Contacto</a>
     </div>
 
-    <!-- Header Image -->
-    <header class="w3-container w3-center w3-padding-64">
-        <img src="nina_tablet.png" alt="Imagen de cabecera" class="header-image">
+    <!-- Header with Image and Text -->
+    <header class="header-content">
+        <img src="nina_tablet.png" alt="teacherbot " class="header-image">
+        <div class="header-text w3-xlarge">
+            <h1>Recursos y Juegos Educativos para Aprender Inglés y Español</h1>
+        </div>
     </header>
 
     <!-- Acerca de -->
