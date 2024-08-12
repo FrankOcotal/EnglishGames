@@ -50,10 +50,19 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -70%);
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
+            padding: 20px;
             border-radius: 8px;
+            color: white;
+            width: 90%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header-text h1 {
+            font-size: calc(16px + 2vw); /* Ajuste dinámico del tamaño de la fuente */
+            margin: 0;
         }
 
         .content {
@@ -64,6 +73,31 @@
         .w3-card:hover {
             transform: scale(1.05);
             transition: transform 0.2s;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .header-text {
+                padding: 15px;
+                width: 100%; /* Full width for mobile devices */
+                max-width: 100%;
+            }
+
+            .header-text h1 {
+                font-size: 24px; /* Smaller font size for mobile */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .header-text {
+                padding: 20px;
+                width: 70%; /* More constrained width for larger screens */
+                max-width: 800px;
+            }
+
+            .header-text h1 {
+                font-size: 36px; /* Larger font size for desktop */
+            }
         }
     </style>
 </head>
@@ -79,9 +113,9 @@
 
     <!-- Header with Image and Text -->
     <header class="header-content">
-        <img src="nina_tablet.png" alt="teacherbot " class="header-image">
-        <div class="header-text w3-large w3-text-white">
-            <h1>Recursos y Juegos Educativos para Aprender Inglés </h1>
+        <img src="ruta_de_tu_imagen.jpg" alt="Imagen de cabecera" class="header-image">
+        <div class="header-text">
+            <h1>Recursos y Juegos Educativos para Aprender Inglés y Español</h1>
         </div>
     </header>
 
