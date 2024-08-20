@@ -21,14 +21,14 @@ export const questions = [
   },
   
    {
-    question: "Your doll is prettier than my doll",
-	clue: "Your doll is ..... than my doll",
+    question: "my grandpa is happy",
+	clue: "my .... is happy",
     answers: [
-      '../../img/priti.png', 
-      '../../img/pretty.png', 
-      '../../img/prettier.png'
+      '../../img/dad.png', 
+      '../../img/grandma.png', 
+      '../../img/grandpa.png'
     ],
-    correctAnswer: '../../img/prettier.png'
+    correctAnswer: '../../img/grandpa.png'
   }
   // Añade más preguntas según sea necesario
 ];
