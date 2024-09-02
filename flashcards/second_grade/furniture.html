@@ -104,6 +104,7 @@ function showDivs(n) {
 function pronounce(word) {
   var utterance = new SpeechSynthesisUtterance(word);
   utterance.rate = 0.8; // Velocidad 0.8
+  utterance.lang = 'en-US'; 
   speechSynthesis.speak(utterance);
 }
 </script>
