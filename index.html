@@ -1,192 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TeacherBot.xyz ofrece juegos, flashcards y recursos educativos para aprender inglés y español. Ideal para niños de primaria y jóvenes de secundaria.">
-    <title>TeacherBot: Juegos para Aprender a Leer</title>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6TBPL3W8G"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-E6TBPL3W8G');
-    </script>
-
-  
-    <!-- W3.CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #f4f4f4;
-        }
-
-        h1, h2, h3 {
-            color: #444;
-        }
-
-        .header-content {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-
-        .header-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-        }
-
-        .header-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 8px;
-            color: white;
-            width: 90%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .header-text h1 {
-            font-size: calc(16px + 2vw); /* Ajuste dinámico del tamaño de la fuente */
-            margin: 0;
-        }
-
-        .content {
-            margin: 20px 0;
-            text-align: justify;
-        }
-
-        
-        /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
-            .header-text {
-                padding: 15px;
-                width: 100%; /* Full width for mobile devices */
-                max-width: 100%;
-            }
-
-            .header-text h1 {
-                font-size: 24px; /* Smaller font size for mobile */
-            }
-        }
-
-        @media (min-width: 769px) {
-            .header-text {
-                padding: 20px;
-                width: 70%; /* More constrained width for larger screens */
-                max-width: 800px;
-            }
-
-            .header-text h1 {
-                font-size: 36px; /* Larger font size for desktop */
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Energía - Ciencias Naturales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f9ff;
+      text-align: center;
+      padding: 20px;
+    }
+    .question-box {
+      background: #fff;
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .option {
+      display: block;
+      background: #e3f2fd;
+      border: 1px solid #90caf9;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .option:hover {
+      background: #bbdefb;
+    }
+    .correct {
+      background-color: #c8e6c9 !important;
+    }
+    .incorrect {
+      background-color: #ffcdd2 !important;
+    }
+    #nextBtn, #restartBtn, #showScoresBtn, #clearScoresBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #usernameInput {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    #userSection button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #scoreBoard {
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 2px solid #2196f3;
+      border-radius: 10px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+    #scoreBoard h2 {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 <body>
+  <h1>¿Cuánto sabes sobre la generación de energía?</h1>
 
-    <!-- Top Menu -->
-    <div class="w3-top w3-bar w3-blue">
-        <a href="#" class="w3-bar-item w3-button w3-hover-light-blue">Inicio</a>
-        <a href="#about" class="w3-bar-item w3-button w3-hover-light-blue">Acerca de</a>
-        <a href="#services" class="w3-bar-item w3-button w3-hover-light-blue">Servicios</a>
-        <a href="#contact" class="w3-bar-item w3-button w3-hover-light-blue">Contacto</a>
-    </div>
+  <div id="userSection">
+    <input type="text" id="usernameInput" placeholder="Ingresa tu nombre">
+    <button onclick="startQuiz()">Comenzar</button>
+  </div>
 
-    <!-- Header with Image and Text -->
-    <header class="header-content">
-        <img src="nina_tablet.webp" alt="Imagen de cabecera" class="header-image">
-        <div class="header-text">
-            <h1 class="w3-text-white">Recursos y Juegos Educativos para Aprender Inglés</h1>
-        </div>
-    </header>
+  <div class="question-box" id="quizBox" style="display:none">
+    <h2 id="question"></h2>
+    <h3 id="timer"></h3>
+    <div id="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()" style="display:none">Siguiente</button>
+  </div>
 
-    <!-- Acerca de -->
-    <section id="about" class="w3-container w3-padding-64">
-        <h2 class="w3-center">Acerca de TeacherBot</h2>
-        <div class="w3-content w3-padding">
-    <p class="w3-large">TeacherBot.xyz es la web app definitiva creada por Francisco Vásquez,
-        para encontrar flashcards, recursos educativos y juegos interactivos diseñados para enseñar y aprender inglés.
-     Perfecto para niños de primaria y jóvenes de secundaria.</p>
-        </div>
-    </section>
+  <h3 id="score"></h3>
+  <h3 id="failures"></h3>
+  <button id="restartBtn" onclick="startQuiz()" style="display:none">Reiniciar</button>
 
-    <!-- Main Content -->
-    <main>
-        <section class="w3-card w3-padding-32 w3-margin w3-white">
+  <button id="showScoresBtn">Ver puntajes guardados</button>
+  <button id="clearScoresBtn">Borrar puntajes</button>
 
-            <div class="w3-row"> <div class="w3-col s3"><br>
-                <img src="logo.webp" style="width:100%">
-            </div>
-            <div class="w3-col s9 w3-container">
-               <h3 class="w3-center">Juegos en Inglés</h3>
-                <p>Juegos interactivos para practicar grámatica, vocabulario, listening, speaking, reading and writing basados 
-                    en la maya curricular ofrecida por el Mined. Los 
-                jurgos están categorizados por grado.</p>
-                <a href="englishgames/index.html" class="w3-btn w3-blue w3-large w3-center"> Jugar </a>
-            </div>
-            </div>
-            
-        </section>
+  <div id="scoreBoard"></div>
 
-        <section class="w3-card w3-padding-32 w3-margin w3-white">
-            <div class="w3-row"> <div class="w3-col s3"><br>
-                <img src="flashcard.webp" style="width:100%">
-            </div>
-            <div class="w3-col s9 w3-container">
-               <h3 class="w3-center">Flashcards</h3>
-                <p>Encuentra imágenes de los diferentes contenidos a enseñar según la Maya Curricular del Mined Nicaragua.</p>
-                <a href="flashcards/index.html" class="w3-btn w3-blue w3-large w3-center"> Ver Flashcards </a>
-            </div>
-            </div>
-        </section>
-
-        <section class="w3-card w3-padding-32 w3-margin w3-white">
-            <div class="w3-row"> <div class="w3-col s3"><br>
-                <img src="wordsearch.png" style="width:100%">
-            </div>
-            <div class="w3-col s9 w3-container">
-               <h3 class="w3-center">WordSearch Creator </h3>
-                <p> Crea sopas de Letra personalizadas según los contenidos a enseñar o evaluar </p>
-                <a href="englishgames/wordsearch/index.html" class="w3-btn w3-blue w3-large w3-center"> Crear Sopa de Letra </a>
-            </div>
-            </div>
-        </section>
-
- <section class="w3-card w3-padding-32 w3-margin w3-white">
-            <div class="w3-row"> <div class="w3-col s3"><br>
-                <img src="book.png" style="width:100%">
-            </div>
-            <div class="w3-col s9 w3-container">
-               <h3 class="w3-center">Stories </h3>
-                <p> Encuentra fascinantes historias con las cuales vas a poder enseñar inglés a niños y jóvenes de manera creativa y dinámica
-                    con la ayuda de imágenes, pronunciación y texto.</p>
-                <a href="stories//index.html" class="w3-btn w3-blue w3-large w3-center"> Leer historias </a>
-            </div>
-            </div>
-        </section>
-
-        
-        
-    </main>
-
-    <!-- Footer -->
-    <footer class="w3-center w3-padding-16 w3-light-grey">
-        <p>&copy; 2024 TeacherBot.xyz. Todos los derechos reservados.</p>
-    </footer>
-
-    
+  <script src="js/juego.js"></script>
 </body>
 </html>
