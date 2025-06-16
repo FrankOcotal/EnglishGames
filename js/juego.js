@@ -117,7 +117,7 @@ function loadQuestion() {
     optionsDiv.appendChild(btn);
   });
 
-  timeLeft = 10;
+  timeLeft = 15;
   document.getElementById("timer").textContent = `⏱ Tiempo restante: ${timeLeft}s`;
   timer = setInterval(() => {
     timeLeft--;
