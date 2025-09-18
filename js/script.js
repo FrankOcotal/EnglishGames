@@ -16,7 +16,7 @@ monogatari.action('message').messages({
 monogatari.action('notification').notifications({
 	'Welcome': {
 		title: 'Welcome',
-		body: 'Bienvenido a Cognitron. Una aventura educativa sin conexión.',
+		body: 'Bienvenido a Aventumente, Una aventura educativa sin conexión.',
 		icon: ''
 	}
 });
@@ -27,6 +27,7 @@ monogatari.script({
 
 	'Cognitron': [
 		'show scene #ffffff',
+		
 		'y ¡Bienvenido a Cognitron!',
 		'y Este es un juego educativo diseñado para primaria y secundaria.',
 		'jump Start'
@@ -34,7 +35,7 @@ monogatari.script({
 
 	// El juego empieza aquí: pide nombre y luego elige nivel
 	'Start': [
-		'show scene #f7f6f6 with fadeIn',
+		'show scene inicio with fadeIn',
 		'show notification Welcome',
 		{
 			'Input': {

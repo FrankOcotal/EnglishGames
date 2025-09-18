@@ -25,8 +25,8 @@ monogatari.assets('videos', {});
 monogatari.assets('images', {});
 
 monogatari.assets('scenes', {
-	
-	'primaria': 'primariabg.jpeg',
+	'inicio': 'index.png',
+	'primaria': 'primariabg.png',
 	'Inicio': 'inicio_historia.png',
 	'puente': 'puente.png',
 	'totem': 'totem.png',
